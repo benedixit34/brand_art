@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="globals.css">
+    <title>Animated Hover</title>
+
+</head>
+
+<body class="font-[Filson]">
+    <main class="relative bg-white">
+        <div class="absolute inset-0 bg-[url('./img/BACK.png')] z-0 bg-cover bg-center opacity-20 pointer-events-none">
+        </div>
+
+
+        <section class="2xl:p-40 p-10 xl:px-20 py-20 relative bg-teal-500">
+            <div class="grid lg:grid-cols-2 2xl:gap-x-30 gap-x-20 space-y-10 items-center">
+                <h1 class="2xl:text-6xl/20 text-5xl/14 font-semibold tracking-tighter">Big Dreams Need Bold
+                    Collaborators.</h1>
+                <div class="space-y-4">
+                    <p class="text-xl/12 font-light">Whether you're launching something new, refreshing your
+                        brand, or looking to break through the noise—we’d love to
+                        build it with you. Let’s create work that moves people and makes culture.</p>
+                    <a href="" class="text-xl font-light">Learn More</a>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- <section class="p-40 relative">
+            <div class="max-w-md mx-auto">
+
+                <div class="flex border-b space-x-4">
+                    <a href="#tab1" class="px-4 py-2 text-gray-600 hover:text-blue-500">Tab 1</a>
+                    <a href="#tab2" class="px-4 py-2 text-gray-600 hover:text-blue-500">Tab 2</a>
+                    <a href="#tab3" class="px-4 py-2 text-gray-600 hover:text-blue-500">Tab 3</a>
+                </div>
+
+               
+                <div class="mt-4">
+
+                    <div id="tab1" class="tab-content">
+                        <p class="p-4 bg-gray-100 rounded">Content for Tab 1</p>
+                    </div>
+
+                    <div id="tab2" class="tab-content hidden">
+                        <p class="p-4 bg-gray-100 rounded">Content for Tab 2</p>
+                    </div>
+
+                    <div id="tab3" class="tab-content hidden">
+                        <p class="p-4 bg-gray-100 rounded">Content for Tab 3</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </section> -->
+
+
+
+        <section class="2xl:p-40 xl:p-20 px-10 py-20 relative">
+            <form action="" method="post" class="flex flex-col xl:w-1/2 w-full">
+                <input type="text" name="full_name" id="" placeholder="Enter Your Full Name" class="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
+         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
+         transition duration-300">
+                <input type="email" name="email" id="" placeholder="Enter Your Email Address" class="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
+         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
+         transition duration-300">
+
+                <fieldset class="text-xl font-light mb-20">
+                    <legend class="mb-10">
+                        <span class="font-light text-teal-500">What Service Are You Looking For?</span>
+                    </legend>
+                    <div class="flex gap-10 flex-wrap">
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Brand Strategy</label>
+                        </div>
+
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Creative Concept Development</label>
+                        </div>
+
+
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Logo and Visual Identity</label>
+                        </div>
+
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Brand Communication</label>
+                        </div>
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Experience Design</label>
+                        </div>
+
+
+                        <div class="space-x-2">
+
+                            <input type="checkbox" name="brand_strategy" id="">
+                            <label for="">Others</label>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+                <textarea id="" placeholder="Write Your Message" class="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
+         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
+         transition duration-300"></textarea>
+                <button type="submit"
+                    class="self-start bg-teal-500 text-xl px-10 py-4 hover:bg-teal-400 font-medium">Send
+                    Message</button>
+            </form>
+        </section>
+
+
+
+
+    </main>
+
+
+    <section class="2xl:p-40 xl:px-20 px-10 py-20 bg-yellow-400 space-y-4">
+        <p class="text-2xl">CONTACT</p>
+
+        <a class="2xl:text-8xl xl:text-6xl text-5xl font-bold tracking-tighter flex">Let's Talk Art
+            <span class="place-self-end"><img src="./img/arrow.svg" class="xl:w-20 w-10"></span></a>
+    </section>
+
+
+
+    <footer class="bg-zinc-800 px-10 md:px-16 2xl:p-40 py-20 flex flex-col md:flex-row md:justify-between gap-12">
+
+        <!-- Left Section -->
+        <div class="space-y-8 md:w-1/4">
+            <img src="img/brand_art_logo.png" alt="" class="w-40">
+
+            <div class="flex gap-5 text-2xl text-white">
+                <i class="fa-brands fa-facebook hover:text-zinc-400 cursor-pointer transition"></i>
+                <i class="fa-brands fa-instagram hover:text-zinc-400 cursor-pointer transition"></i>
+                <i class="fa-brands fa-x-twitter hover:text-zinc-400 cursor-pointer transition"></i>
+                <i class="fa-brands fa-linkedin hover:text-zinc-400 cursor-pointer transition"></i>
+                <i class="fa-brands fa-pinterest hover:text-zinc-400 cursor-pointer transition"></i>
+            </div>
+        </div>
+
+        <!-- Links Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-10 w-full md:w-2/3 font-light">
+
+            <!-- Home -->
+            <ul class="space-y-4 md:block hidden">
+                <li class="torn-paper font-bold text-lg text-center">Home</li>
+            </ul>
+
+            <!-- About -->
+            <ul class="space-y-4">
+                <li class="torn-paper font-bold text-lg text-center">About</li>
+                <li><a href="#" class="footer-link">Who We Are</a></li>
+                <li><a href="#" class="footer-link">What We Do</a></li>
+                <li><a href="#" class="footer-link">Our Service</a></li>
+            </ul>
+
+            <!-- Services -->
+            <ul class="space-y-4">
+                <li class="torn-paper font-bold text-lg text-center">Services</li>
+                <li><a href="#" class="footer-link">Creative Development</a></li>
+                <li><a href="#" class="footer-link">Branding/Strategy</a></li>
+                <li><a href="#" class="footer-link">Advertising Print Production</a></li>
+            </ul>
+
+            <!-- Contact -->
+            <ul class="space-y-4">
+                <li class="torn-paper font-bold text-lg text-center">Let's Talk</li>
+                <li><a href="#" class="footer-link">Hire Us</a></li>
+                <li><a href="#" class="footer-link">Partner With Us</a></li>
+                <li><a href="#" class="footer-link">General Inquiry</a></li>
+            </ul>
+
+        </div>
+
+    </footer>
+</body>
+
+</html>

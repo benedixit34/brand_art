@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <link rel="stylesheet" href="globals.css">
+    <title>Animated Hover</title>
+ 
+</head>
+
+<body class="font-[Filson]">
+    <video autoplay muted loop playsinline class="w-screen"
+        poster="img/background.jpg">
+        <source src="videos/showreel.mp4" type="video/mp4" />
+    </video>
+
+    <main class="relative bg-white">
+        <div class="absolute z-0 inset-0 bg-[url('./img/BACK.png')] bg-cover bg-center opacity-20 pointer-events-none">
+        </div>
+        <section class="p-40 flex justify-center z-30 relative">
+            <h1 class="text-5xl/16 text-center px-60 font-light tracking-tight">
+                <span class="text-green-700 font-bold">Brand Art & Communications</span> specializes in
+                cultural craftsmanship and emotion-driven
+                design, offering a unique blend of creative
+                services tailored to elevate brands through
+                authentic and engaging experiences.
+            </h1>
+        </section>
+        <section class="flex flex-col space-y-10 p-10">
+            <div class="flex relative isolate group h-180">
+
+                <div
+                    class="bg-red-700 w-1/3 text-white pl-10 pr-30 py-10 flex flex-col gap-y-50 absolute h-full z-10 animate-slide-in">
+                    <p class="text-3xl self-start">01/03</p>
+                    <div class="space-y-4">
+                        <h1 class="text-8xl font-bold">AVIS</h1>
+                        <p class="text-2xl font-light">See Case</p>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-hidden">
+                    <img src="https://www.starfishco.com/wp-content/uploads/2022/12/Avis-logo.png" alt=""
+                        class="transition duration-300 ease-in-out hover:scale-110">
+                </div>
+            </div>
+            <div class="flex relative isolate group h-180">
+
+                <div
+                    class="bg-green-800 text-white w-1/3 pl-10 pr-30 py-10 flex flex-col gap-y-50 absolute h-full z-10 animate-slide-in">
+                    <p class="text-3xl self-start">02/03</p>
+                    <div class="space-y-4">
+                        <h1 class="text-8xl font-bold">Gallup</h1>
+                        <p class="text-2xl font-light">See Case</p>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-hidden">
+                    <img src="https://www.starfishco.com/wp-content/uploads/2022/12/gallup-1920x800-1.jpg" alt=""
+                        class="transition duration-300 ease-in-out hover:scale-110">
+                </div>
+            </div>
+
+
+            <div class="flex relative isolate group h-180">
+
+                <div
+                    class="bg-blue-700 text-white w-1/3 pl-10 pr-30 py-10 flex flex-col gap-y-50 absolute h-full z-10 animate-slide-in">
+                    <p class="text-3xl self-start">03/03</p>
+                    <div class="space-y-4">
+                        <h1 class="text-8xl font-bold">ADL</h1>
+                        <p class="text-2xl font-light">See Case</p>
+
+                    </div>
+
+                </div>
+
+                <div class="overflow-hidden">
+                    <img src="https://www.starfishco.com/wp-content/uploads/2022/12/Main.jpg" alt=""
+                        class="transition duration-300 ease-in-out hover:scale-110">
+                </div>
+            </div>
+
+
+
+        </section>
+
+
+        <section class="p-40">
+            <p class="text-2xl/12 px-50 text-center font-light">Welcome to <span class="text-green-700">Brand Art and
+                    Communications</span>, where
+                our creative thinkers works closely with innovative strategy to
+                create meaningful designs that capture the cultural nuances of
+                your audience and evoke the emotions that inspire action.</p>
+        </section>
+
+
+
+
+
+
+    </main>
+    <section class="p-40 bg-yellow-400">
+        <p class="text-2xl">CONTACT</p>
+
+        <a class="text-8xl font-bold flex tracking-tighter">Let's Talk Art <span class="place-self-end"><img src="./img/arrow.svg"
+                    class="w-20"></span></a>
+    </section>
+
+
+    <footer class="bg-zinc-800 p-40 flex place-content-between">
+        <div class="space-y-10 w-1/4">
+            <img src="img/brand_art_logo.png" alt="" class="w-50">
+            <div class="space-y-5">
+                <div class="text-5xl text-white flex gap-x-5">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+                <div class="text-5xl text-white flex gap-x-5">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="flex gap-x-20 place-content-end font-light">
+            <ul>
+
+                <li class="torn-paper font-bold text-2xl text-center"><a href="">Home</a></li>
+
+            </ul>
+        
+
+            <ul class="space-y-6">
+
+                <li class="torn-paper font-bold text-2xl pb-6 text-center"><a href="">About</a></li>
+                <li class="text-xl text-white"><a href="">Who We Are</a></li>
+                <li class="text-xl text-white"><a href="">What We Do</a></li>
+                <li class="text-xl text-white"><a href="">Our Service</a></li>
+                
+            </ul>
+
+  <ul class="space-y-6">
+
+                <li class="torn-paper font-bold text-2xl pb-6 text-center"><a href="">Services</a></li>
+                <li class="text-xl text-white"><a href="">Creative Development</a></li>
+                <li class="text-xl text-white"><a href="">Branding/Strategy</a></li>
+                <li class="text-xl text-white"><a href="">Adertising Print Production</a></li>
+                
+            </ul>
+
+              <ul class="space-y-6">
+
+                <li class="torn-paper font-bold text-2xl pb-6 text-center"><a href="">Let's Talk</a></li>
+                <li class="text-xl text-white"><a href="">Hire Us</a></li>
+                <li class="text-xl text-white"><a href="">Partner With Us</a></li>
+                <li class="text-xl text-white"><a href="">General Inquiry</a></li>
+                
+            </ul>
+
+
+            
+
+
+        </div>
+
+
+    </footer>
+
+</body>
+
+</html>
