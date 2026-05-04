@@ -24,3 +24,27 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+
+.torn-paper {
+    display: inline-block;
+    padding: 8px 20px;
+    background-image: url('/img/Torn_Paper_Bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+
+
+.footer-link {
+    color: white;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.footer-link:hover {
+    color: #f1f500; 
+}
+

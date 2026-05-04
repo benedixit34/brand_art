@@ -1,0 +1,22 @@
+{
+  "sidebar": {
+    "title": "Stay"
+  },
+  "sections": [
+    {
+      "title": "Creative",
+      "description": "We craft visually compelling and user-focused digital experiences that bring ideas to life through design and motion.",
+      "bg": "bg-blue-700"
+    },
+    {
+      "title": "Innovative",
+      "description": "We build forward-thinking solutions using modern technologies that solve real business problems and improve user engagement.",
+      "bg": "bg-purple-700"
+    },
+    {
+      "title": "Hungry",
+      "description": "We are driven by curiosity and ambition, constantly pushing boundaries to deliver better, faster, and smarter products.",
+      "bg": "bg-green-700"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "email": "hello@nexuswave.digital",
+  "phone": "+234 (0) 800 123 4567",
+  "address": {
+    "line1": "42 Innovation Boulevard",
+    "line2": "9th Floor Lekki Phase 2",
+    "city": "Lagos",
+    "country": "Nigeria"
+  }
+}
