@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
 import { Footer } from "@/components/Footer";
-import { ContactSection } from "@/components/ContactSection";
+import { Header } from "@/components/Header";
+
+
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
 
 
 
@@ -48,6 +53,7 @@ export default function RootLayout({
       className={`h-full antialiased ${filson.variable}`}
     >
       <body className={`${filson.className} min-h-full flex flex-col overflow-x-hidden`}>
+        <Header />
         {children}
        
         <Footer />

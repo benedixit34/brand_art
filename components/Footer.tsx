@@ -1,5 +1,6 @@
 import Image from "next/image";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebook, faInstagram, faXTwitter, faLinkedin, faPinterest } from "@fortawesome/free-brands-svg-icons";
 
 
 export const Footer = () => {
@@ -14,12 +15,12 @@ export const Footer = () => {
         <div className="space-y-8 md:w-1/4">
             <Image src="/img/brand_art_logo.png" alt="Brand Art Logo" width="500" height="500" className="w-40" />
 
-            <div className="flex gap-5 text-2xl text-white">
-                <i className="fa-brands fa-facebook hover:text-zinc-400 cursor-pointer transition"></i>
-                <i className="fa-brands fa-instagram hover:text-zinc-400 cursor-pointer transition"></i>
-                <i className="fa-brands fa-x-twitter hover:text-zinc-400 cursor-pointer transition"></i>
-                <i className="fa-brands fa-linkedin hover:text-zinc-400 cursor-pointer transition"></i>
-                <i className="fa-brands fa-pinterest hover:text-zinc-400 cursor-pointer transition"></i>
+            <div className="flex gap-5 text-4xl text-white">
+               <FontAwesomeIcon icon={faFacebook} />
+               <FontAwesomeIcon icon={faInstagram} />
+               <FontAwesomeIcon icon={faXTwitter} />
+               <FontAwesomeIcon icon={faLinkedin} />
+               <FontAwesomeIcon icon={faPinterest} />
             </div>
         </div>
 
