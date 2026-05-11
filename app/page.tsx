@@ -1,14 +1,13 @@
 "use client"
 
 import { ContactSection } from "@/components/ContactSection"
+import HeroVideo from "@/components/HeroPlayer";
 
 export default function Page() {
   return (
     <>
-    <video autoPlay muted loop playsInline className="w-screen"
-        poster="img/background.jpg">
-        <source src="videos/showreel.mp4" type="video/mp4" />
-    </video>
+    <HeroVideo />
+
       <main className="relative bg-white">
         <div className="absolute z-0 inset-0 bg-[url('/img/BACK.png')] bg-cover bg-center opacity-20 pointer-events-none">
         </div>
