@@ -64,33 +64,27 @@ export default function Page() {
         
 
         <div className="relative z-10 lg:p-40 px-4 py-10 flex">
-          <div className="space-y-6 2xl:w-1/2 w-full bg-teal-900 text-white p-12" ref={boxRef}>
-            <h1 className="2xl:text-8xl/25 xl:text-6xl/20 text-5xl/14 tracking-tighter font-bold">
+          <div className="space-y-3 2xl:space-y-6 2xl:w-1/2 w-full bg-teal-900 text-white p-12" ref={boxRef}>
+            <h1 className="2xl:text-8xl/25 xl:text-6xl/20 text-4xl/12 tracking-tighter font-bold">
               Branding At <span className="text-yellow-400">Brand Art</span>
             </h1>
-            <div className="space-y-4 font-light text-xl/12">
-              <p>
+            
+              <p className="font-light text-md/10 xl:text-xl/12">
                 This is the origin story. The core. The blueprint. The starting
                 point of everything we do. We define your why, shape your voice,
                 craft your look, and help you show up with clarity, character,
                 and conviction. Because in a world full of noise, your brand
                 should sound like a truth.
               </p>
-            </div>
+           
           </div>
         </div>
       </section>
 
-      <main className="relative bg-white">
-        <div className="absolute inset-0  bg-cover bg-center opacity-20 pointer-events-none"></div>
+      <main className="">
+       
 
-        <section className="relative z-10 xl:px-10 px-4 py-20">
-          <ServiceSection />
-         
-
-          
-        </section>
-
+        <ServiceSection />
 
       </main>
       <ContactSection />

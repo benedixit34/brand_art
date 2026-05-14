@@ -4,16 +4,16 @@ import ReactPlayer from "react-player";
 export const ServiceSection= () => {
   return (
     <>
-         <div className="grid lg:grid-cols-2 2xl:px-20 lg:py-40 p-10 2xl:gap-x-40 gap-10">
+         <div className="grid lg:grid-cols-2 2xl:px-20 lg:py-40 p-4 2xl:gap-x-40 gap-10">
         <div className="grid grid-cols-1 gap-y-40">
             <div className="grid grid-rows-2 min-h-[70vh]">
                 <div className="grid md:grid-cols-2 grid-cols-1">
-                    <div className="flex items-end bg-black text-white h-full w-full p-6">
-                        <h1 className="block md:hidden text-white text-9xl">1</h1>
-                        <h1 className="text-4xl p-6 tracking-tighter">Brand Strategy</h1>
+                    <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
+                        <h1 className="block md:hidden text-white text-9xl font-bold">1</h1>
+                        <h1 className="lg:text-4xl text-2xl p-6 tracking-tight font-bold">Brand Strategy</h1>
                     </div>
                     <div className="flex items-center justify-center md:block hidden">
-                        <h1 className="2xl:text-[12em] text-9xl text-black text-center">1</h1>
+                        <h1 className="2xl:text-[12em] text-9xl text-teal-900 font-bold text-center">1</h1>
                     </div>
 
 
@@ -23,8 +23,8 @@ export const ServiceSection= () => {
 
                     </div>
                     <div
-                        className="flex 2xl:text-xl/10 text-lg border-[0.2px] border-black p-6 justify-self-center text-black font-light items-end">
-                        <p>Defining your brand’s soul; its truth, tone, values, and position in the world.</p>
+                        className="flex 2xl:text-xl/10 text-md/8 border-[0.2px] border-teal-900 p-6 justify-self-center text-black font-light items-end">
+                        <p className="text-teal-900">Defining your brand’s soul; its truth, tone, values, and position in the world.</p>
 
                     </div>
                 </div>

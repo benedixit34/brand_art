@@ -82,7 +82,7 @@ export default function Page() {
 </span>
   
               </h1>
-              <p className="text-xl/10 font-light">
+              <p className="lg:text-xl/10 text-lg/10 font-light">
                 Our commitment to authenticity and strength lies in our ability
                 to deeply understand and translate cultural expression into
                 powerful brand narratives
@@ -91,10 +91,10 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="relative z-10 about-gradient xl:py-30 xl:px-40 py-20 px-10 font-light md:text-center text">
+        <section className="relative z-10 about-gradient xl:py-30 xl:px-40 py-20 px-4 font-light md:text-center text">
           <div className="space-y-4 lg:space-y-8 text-white" ref={aboutContainer}>
             <h1 className="text-3xl text-yellow-500 font-bold">ABOUT US</h1>
-            <h3 className="2xl:text-4xl/20 text-xl/10 lg:tracking-tight about_text">
+            <h3 className="2xl:text-4xl/20 lg:text-xl/10 text-lg/10 lg:tracking-tight about_text">
               We’re an independent, insight-led creative design agency obsessed
               with the power of culture and emotion. Every brand has a truth —
               we help you find it, shape it, and express it beautifully.
@@ -117,7 +117,7 @@ Culture
 </span>
                 
               </h1>
-              <p className="text-xl/10 font-light">
+              <p className="lg:text-xl/10 text-lg/10 font-light">
                 We craft ingenious creative solutions that resonate with your
                 target community through cultural authenticity and emotional
                 depth.
@@ -139,7 +139,7 @@ Culture
             </h1>
             <h3
               id="highlight-text"
-              className="2xl:text-4xl/20 text-xl/10 text-center tracking-tight animated-text text-white font-light"
+              className="2xl:text-4xl/20 text-lg/10 text-center tracking-tight animated-text text-white font-light"
             >
               Everything We Do is Filtered Through the Lens of Brand Experience
               At Brand Art, we don’t separate branding from campaigns or
@@ -163,13 +163,13 @@ Creative
               </p>
             </div>
 
-            <div className="w-full lg:space-y-8 space-y-4">
-              <p className="text-xl/10 font-light">
+            <div className="w-full lg:space-y-8 space-y-4 xl:text-xl/10 text-lg/10 font-light">
+              <p>
                 We help brands clarify their voice, sharpen their image, and
                 connect with the people that matter through work that is
                 creatively daring and culturally grounded.
               </p>
-              <p className="text-xl/10 font-light">
+              <p>
                 From positioning to activation, we design brand journeys that
                 are cohesive, human, and memorable. Whether we’re building a
                 brand from scratch or evolving a legacy, we always begin with
