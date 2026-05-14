@@ -11,8 +11,8 @@ export default function Page() {
       <main className="relative bg-white">
         <div className="absolute z-0 inset-0 bg-[url('/img/BACK.png')] bg-cover bg-center opacity-20 pointer-events-none">
         </div>
-        <section className="p-40 flex justify-center z-30 relative">
-            <h1 className="text-5xl/16 text-center px-60 font-light tracking-tight">
+        <section className="2xl:p-40 px-10 py-20 flex justify-center z-30 relative">
+            <h1 className="2xl:text-7xl/24 text-3xl/16 lg:text-center text-left tracking-tighter font-bold">
                 <span className="text-green-700 font-bold">Brand Art & Communications</span> specializes in
                 cultural craftsmanship and emotion-driven
                 design, offering a unique blend of creative
