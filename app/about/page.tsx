@@ -71,12 +71,12 @@ export default function Page() {
               <img
                 src="/img/about_v2.jpg"
                 alt=""
-                className="xl:h-screen object-cover object-right p-4 md:p-0 animate-slide-in"
+                className="xl:h-screen object-cover object-right p-4 md:p-0 animate-slide-in-left"
               />
             </div>
 
             <div className="2xl:p-40 py-10 px-4 xl:w-1/2 w-full">
-              <h1 className="2xl:text-7xl/18 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter text-teal-500 pb-5">
+              <h1 className="2xl:text-7xl/18 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter text-teal-900 pb-5">
                 We craft the true essence of Art
               </h1>
               <p className="text-xl/10 font-light">
@@ -113,7 +113,7 @@ export default function Page() {
         <section className="relative z-10 2xl:p-40 xl:p-20 py-20 px-4">
           <div className="grid xl:grid-cols-2 gap-x-30 space-y-10 items-center">
             <div className="w-full">
-              <h1 className="2xl:text-7xl/18 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5">
+              <h1 className="2xl:text-6xl/18 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5 text-teal-900">
                 We speak the language of Culture
               </h1>
               <p className="text-xl/10 font-light">
@@ -124,7 +124,7 @@ export default function Page() {
             </div>
 
             <div className="w-full">
-              <img src="/img/about_v3.jpg" alt="" className="w-screen" />
+              <img src="/img/about_v3.jpg" alt="" className="w-screen animate-slide-in-right" />
             </div>
           </div>
         </section>

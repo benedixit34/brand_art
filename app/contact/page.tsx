@@ -12,11 +12,13 @@ export default function Page() {
   return (
     <>
     
-      <main className="contact-gradient">
+      <main className="relative min-h-screen bg-white overflow-hidden">
+      <div className="absolute z-0 inset-0 bg-[url('/img/BACK.png')] bg-cover bg-center opacity-10 pointer-events-none">
+        </div>
         <section className="grid lg:grid-cols-2 grid-cols-1 2xl:p-40 xl:p-20 px-10 py-20 relative gap-20">
           <div className="lg:space-y-10 space-y-6 lg:border-r-1 lg:pr-20">
             <h1 className="2xl:text-8xl/24 text-4xl/14 font-bold tracking-tighter">
-              Big Dreams Need Bold Collaborators.
+              Big Dreams Need Bold <span className="text-amber-500">Collaborators.</span>
             </h1>
             <p className="text-xl/12 font-light">
               Whether you're launching something new, refreshing your brand, or

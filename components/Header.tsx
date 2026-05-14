@@ -18,7 +18,7 @@ export const Header = () => {
 
    
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-20 text-2xl font-medium text-gray-700">
+          <ul className="flex items-center gap-20 text-lg font-medium text-gray-700">
              <li>
               <a
                 href="/"
@@ -49,7 +49,7 @@ export const Header = () => {
         <div className="hidden md:block">
           <a
             href="/contact"
-            className="px-5 py-4 rounded-sm bg-black text-white text-2xl hover:bg-gray-800 transition"
+            className="px-5 py-4 rounded-sm bg-black text-white text-lg hover:bg-gray-800 transition"
           >
             Get in Touch <span className="pl-2"><FontAwesomeIcon icon={faEnvelope} /></span>
           </a>
