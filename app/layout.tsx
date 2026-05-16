@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import CustomCursor from "@/components/CustomCursor";
 
 
 import { config } from '@fortawesome/fontawesome-svg-core'
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`h-full antialiased ${filson.variable}`}
     >
       <body className={`${filson.className} min-h-full flex flex-col overflow-x-hidden`}>
+       <CustomCursor />
         <Header />
         {children}
        

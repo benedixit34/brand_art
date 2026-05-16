@@ -62,11 +62,11 @@ export default function Page() {
     { scope: mainRef },
   );
   return (
-    <div ref={mainRef}>
-      <main className="relative bg-white">
-        <div className="absolute inset-0 bg-[url('/img/BACK.png')] z-0 bg-cover bg-center opacity-20 pointer-events-none"></div>
-        <section className="relative z-10">
-          <div className="flex items-center lg:flex-row flex-col gap-x-20">
+    <main ref={mainRef}>
+  
+        
+       
+          <section className="flex items-center lg:flex-row flex-col gap-x-20">
             <div className="xl:w-1/3 w-full">
               <img
                 src="/img/about_v2.jpg"
@@ -76,8 +76,8 @@ export default function Page() {
             </div>
 
             <div className="py-10 px-4 xl:w-1/2 w-full">
-              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter text-teal-900 pb-5">
-                We craft the true essence of <span className="inline-block bg-yellow-500 text-white px-3 py-1 rotate-[-6deg]">
+              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5">
+                We craft the true essence of <span className="inline-block bg-teal-900 text-yellow-400 text-6xl px-3 py-1 rotate-[-6deg] text-5xl tracking-normal font-bold">
   Art
 </span>
   
@@ -88,10 +88,10 @@ export default function Page() {
                 powerful brand narratives
               </p>
             </div>
-          </div>
-        </section>
+          </section>
+      
 
-        <section className="relative z-10 about-gradient xl:py-30 xl:px-40 py-20 px-4 font-light md:text-center text">
+        <section className="bg-teal-900 xl:py-30 xl:px-40 py-20 px-4 font-light md:text-center text">
           <div className="space-y-4 lg:space-y-8 text-white" ref={aboutContainer}>
             <h1 className="text-3xl text-yellow-500 font-bold">ABOUT US</h1>
             <h3 className="2xl:text-4xl/20 lg:text-xl/10 text-lg/10 lg:tracking-tight about_text">
@@ -108,11 +108,11 @@ export default function Page() {
           </div>
         </section>
 
-        <section className="relative z-10 2xl:p-40 xl:p-20 py-20 px-4">
+        <section className="2xl:p-40 xl:p-20 py-20 px-4">
           <div className="grid xl:grid-cols-2 gap-x-30 space-y-10 items-center">
             <div className="w-full">
-              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5 text-teal-900">
-                We speak the language of <span className="inline-block bg-yellow-500 text-white px-3 py-1 rotate-[4deg]">
+              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5">
+                We speak the language of <span className="inline-block bg-teal-900 text-yellow-400 text-6xl px-3 py-1 rotate-[-6deg] tracking-tight">
 Culture
 </span>
                 
@@ -130,7 +130,7 @@ Culture
           </div>
         </section>
         <section
-          className="relative z-10 bg-teal-800 xl:p-40 py-20 px-4"
+          className="relative z-10 bg-teal-900 xl:p-40 py-20 px-4"
           ref={serviceContainer}
         >
           <div className="space-y-8">
@@ -151,12 +151,12 @@ Culture
           </div>
         </section>
 
-        <section className="relative z-10 2xl:p-40 xl:px-20 py-20 px-4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     0">
+        <section className="2xl:p-40 xl:px-20 py-20 px-4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     0">
           <div className="grid xl:grid-cols-2 2xl:gap-x-30 lg:gap-10 gap-4 items-center">
             <div className="w-full space-y-4">
-              <h3 className="text-2xl text-yellow-500">WHAT WE DO</h3>
+              <h3 className="text-2xl">WHAT WE DO</h3>
               <p className="2xl:text-6xl/20 xl:text-5xl/16 text-3xl/12 font-semibold tracking-tighter">
-                Everything From Strategy to Storytelling to <span className="inline-block bg-yellow-500 text-white px-3 py-1 rotate-[-4deg]">
+                Everything From Strategy to Storytelling to <span className="inline-block bg-teal-900 text-yellow-400 px-3 py-1 rotate-[-4deg] text-5xl">
 Creative
 </span> Development
                 to Standout Execution
@@ -178,8 +178,8 @@ Creative
             </div>
           </div>
         </section>
-      </main>
+     
       <ContactSection />
-    </div>
+    </main>
   );
 }

@@ -2,24 +2,21 @@
 
 import { ContactSection } from "@/components/ContactSection"
 import HeroVideo from "@/components/HeroPlayer";
+import { Scattered } from "@/components/Scattered";
+
 
 export default function Page() {
   return (
     <>
     <HeroVideo />
+    <Scattered />
 
-      <main className="relative bg-white">
-        <div className="absolute z-0 inset-0 bg-[url('/img/BACK.png')] bg-cover bg-center opacity-20 pointer-events-none">
-        </div>
-        <section className="2xl:p-40 px-10 py-20 flex justify-center z-30 relative">
-            <h1 className="2xl:text-7xl/24 text-3xl/16 lg:text-center text-left tracking-tighter font-bold">
-                <span className="text-green-700 font-bold">Brand Art & Communications</span> specializes in
-                cultural craftsmanship and emotion-driven
-                design, offering a unique blend of creative
-                services tailored to elevate brands through
-                authentic and engaging experiences.
-            </h1>
-        </section>
+
+      <main className=" bg-white">
+   
+
+          
+     
         <section className="flex flex-col space-y-10 p-10">
             <div className="flex relative isolate group h-180">
 

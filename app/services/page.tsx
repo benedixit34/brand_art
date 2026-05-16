@@ -12,42 +12,51 @@ gsap.registerPlugin(Draggable);
 
 export default function Page() {
   const boxRef = useRef<HTMLDivElement | null>(null);
-  const draggableRef = useRef<Draggable | null>(null);
 
 
 
-  useEffect(()=>{
-    if (!boxRef.current) return
 
+useEffect(() => {
+  if (!boxRef.current) return;
 
-    draggableRef.current = Draggable.create(boxRef.current, {
-        type: "x,y",
-        edgeResistance: 0.65,
-        inertia: true,
-    })[0]
+  const box = boxRef.current;
 
-    draggableRef.current.disable()
-    const handleMouseEnter = () => {
-        draggableRef.current?.enable()
-    }
+  let lastX = 0;
 
+  const onMove = (e: MouseEvent) => {
+    const deltaX = e.clientX - lastX;
+    lastX = e.clientX;
 
-    const handleMouseLeave = () => {
-        draggableRef.current?.disable()
-    }
+    // ignore tiny noise
+    if (Math.abs(deltaX) < 2) return;
 
+    gsap.to(box, {
+      x: deltaX > 0 ? 40 : -40,
+      scale: 1.02,
+      duration: 0.4,
+      ease: "power3.out",
+    });
+  };
 
+  const onLeave = () => {
+    gsap.to(box, {
+      x: 0,
+      scale: 1,
+      duration: 0.5,
+      ease: "power3.out",
+    });
+  };
 
-    boxRef.current.addEventListener("mouseenter", handleMouseEnter)
-    boxRef.current.addEventListener("mouseleave", handleMouseLeave)
+  const boxEl = box;
 
-    return () => {
-        boxRef.current?.removeEventListener("mouseenter", handleMouseEnter)
-        boxRef.current?.removeEventListener("mouseleave", handleMouseLeave)
+  boxEl.addEventListener("mousemove", onMove);
+  boxEl.addEventListener("mouseleave", onLeave);
 
-        draggableRef.current?.kill()
-    }
-  }, [])
+  return () => {
+    boxEl.removeEventListener("mousemove", onMove);
+    boxEl.removeEventListener("mouseleave", onLeave);
+  };
+}, []);
   return (
     <>
       <section className="relative 2xl:h-screen h-full overflow-hidden">
