@@ -12,20 +12,14 @@ export const Header = () => {
           <img
             src="./img/brand_art_logo.png"
             alt="Brand Logo"
-            className="lg:h-20 h-10 w-auto object-contain"
+            className="lg:h-20 h-10 w-auto object--contain"
           />
         </div>
 
    
         <nav className="hidden md:block">
-          <ul className="flex items-center gap-20 text-lg font-medium text-gray-700">
-             <li>
-              <a
-                href="/"
-                className="hover:text-black transition-colors duration-200"
-              >Welcome
-              </a>
-            </li>
+          <ul className="flex items-center gap-10 text-lg font-medium text-gray-700">
+      
             <li>
               <a
                 href="/about"
@@ -40,6 +34,25 @@ export const Header = () => {
                 className="hover:text-black transition-colors duration-200"
               >
                 Services
+              </a>
+            </li>
+
+
+              <li>
+              <a
+                href="/services"
+                className="hover:text-black transition-colors duration-200"
+              >
+                Work
+              </a>
+            </li>
+
+               <li>
+              <a
+                href="/services"
+                className="hover:text-black transition-colors duration-200"
+              >
+                Insights
               </a>
             </li>
           </ul>

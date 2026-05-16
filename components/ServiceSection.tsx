@@ -10,7 +10,7 @@ export const ServiceSection= () => {
                 <div className="grid md:grid-cols-2 grid-cols-1">
                     <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
                         <h1 className="block md:hidden text-white text-9xl font-bold">1</h1>
-                        <h1 className="lg:text-4xl text-2xl p-6 tracking-tight font-bold">Brand Strategy</h1>
+                        <h1 className="lg:text-4xl text-3xl p-6 tracking-tight font-bold">Brand Strategy</h1>
                     </div>
                     <div className="flex items-center justify-center md:block hidden">
                         <h1 className="2xl:text-[12em] text-9xl text-teal-900 font-bold text-center">1</h1>
@@ -33,7 +33,7 @@ export const ServiceSection= () => {
 
             <div className="grid grid-rows-2 min-h-[70vh]">
                 <div className="grid md:grid-cols-2 grid-cols-1">
-                    <div className="flex items-end bg-black text-white h-full w-full p-6">
+                    <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
                         <h1 className="block md:hidden text-white text-9xl">2</h1>
                         <h1 className="2xl:text-4xl text-3xl p-6 tracking-tighter">Creative Concept Development</h1>
                     </div>
@@ -61,7 +61,7 @@ export const ServiceSection= () => {
 
             <div className="grid grid-rows-2 min-h-[70vh]">
                 <div className="grid md:grid-cols-2 grid-cols-1">
-                    <div className="flex items-end bg-black text-white h-full w-full p-6">
+                    <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
                         <h1 className="block md:hidden text-white text-9xl">3</h1>
                         <h1 className="2xl:text-4xl text-3xl p-6 tracking-tighter">Logo & Visual Identity</h1>
                     </div>
@@ -88,7 +88,7 @@ export const ServiceSection= () => {
 
             <div className="grid grid-rows-2 min-h-[70vh]">
                 <div className="grid md:grid-cols-2 grid-cols-1">
-                    <div className="flex items-end bg-black text-white h-full w-full p-6">
+                    <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
                         <h1 className="block md:hidden text-white text-9xl">4</h1>
                         <h1 className="2xl:text-4xl text-3xl p-6 tracking-tighter">Brand Communications</h1>
                     </div>
@@ -115,7 +115,7 @@ export const ServiceSection= () => {
 
             <div className="grid grid-rows-2 min-h-[70vh]">
                 <div className="grid md:grid-cols-2 grid-cols-1">
-                    <div className="flex items-end bg-black text-white h-full w-full p-6">
+                    <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
                         <h1 className="block md:hidden text-white text-9xl">5</h1>
                         <h1 className="2xl:text-4xl text-3xl p-6 tracking-tighter">Experience Design</h1>
                     </div>
