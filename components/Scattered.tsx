@@ -36,7 +36,7 @@ export const Scattered = () => {
     tl.to(movingWords, {
       x: () => gsap.utils.random([-120, 120]) + "vw",
       y: () => gsap.utils.random([-120, 120]) + "vh",
-      opacity: 0, // 👈 was 100, opacity goes 0-1
+      opacity: 0,
       rotation: () => gsap.utils.random(-180, 180),
       stagger: 0.03,
       ease: "power4.in",
@@ -62,8 +62,8 @@ export const Scattered = () => {
       ref={container}
       className="h-screen flex items-center justify-center relative"
     >
-      <h1 className="target-text 2xl:text-[50px]/22 text-[30px]/12 lg:text-center text-left tracking-tighter font-bold 2xl:max-w-4/5">
-        <span className="text-green-700 font-bold">
+      <h1 className="target-text 2xl:text-[60px]/22 text-[30px]/12 lg:text-center text-left tracking-tighter font-bold 2xl:max-w-4/5">
+        <span className="text-teal-900 font-bold">
           <span className="stay inline-block">Brand Art</span> & Communications
         </span>{" "}
         specializes in <span className="stay inline-block">cultural</span>{" "}

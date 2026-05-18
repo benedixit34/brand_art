@@ -9,13 +9,13 @@ export const Footer = () => {
  
 
 
-    <footer className="bg-zinc-800 px-10 md:px-16 2xl:p-40 py-20 flex flex-col md:flex-row md:justify-between gap-12">
+    <footer className="bg-zinc-800 px-10 md:px-16 2xl:px-40 py-20 flex flex-col gap-y-20 text-white">
 
-       
+       <section className="flex flex-col md:flex-row md:justify-between gap-12 ">
         <div className="space-y-8 md:w-1/4">
-            <Image src="/img/brand_art_logo.png" alt="Brand Art Logo" width="500" height="500" className="w-40" />
+            <Image src="/img/brand_art_logo.png" alt="Brand Art Logo" width="500" height="500" className="w-40 logo" />
 
-            <div className="flex gap-5 text-4xl text-white">
+            <div className="flex gap-5 text-2xl text-white">
                <FontAwesomeIcon icon={faFacebook} />
                <FontAwesomeIcon icon={faInstagram} />
                <FontAwesomeIcon icon={faXTwitter} />
@@ -57,6 +57,15 @@ export const Footer = () => {
             </ul>
 
         </div>
+
+       </section>
+       <section className="flex place-content-between border-t-[0.5px] border-white pt-10 font-light">
+        <div>
+            <p className="text-lg">Copyright. Brand Art Communications 2026</p>
+        </div>
+
+       </section>
+        
 
     </footer>
     </>

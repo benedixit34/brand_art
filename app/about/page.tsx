@@ -71,6 +71,7 @@ export default function Page() {
               <img
                 src="/img/about_v2.jpg"
                 alt=""
+                data-cursor="VIEW"
                 className="xl:h-screen object-cover object-right p-4 md:p-0 animate-slide-in-left"
               />
             </div>

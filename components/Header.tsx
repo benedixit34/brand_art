@@ -9,11 +9,12 @@ export const Header = () => {
 
      
         <div className="flex items-center">
-          <img
+          <a href="/"> <img
             src="./img/brand_art_logo.png"
             alt="Brand Logo"
-            className="lg:h-20 h-10 w-auto object--contain"
-          />
+            className="lg:h-15 h-10 w-auto object-contain logo"
+          /></a>
+         
         </div>
 
    
