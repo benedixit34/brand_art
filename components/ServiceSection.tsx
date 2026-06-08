@@ -157,7 +157,6 @@ export const ServiceSection = () => {
           ))}
         </div>
 
-        {/* Right: video */}
         <div className="flex items-center justify-center">
           <div className="relative aspect-square w-full max-w-[700px] overflow-hidden">
             <div className="absolute inset-0 scale-[1.8]">

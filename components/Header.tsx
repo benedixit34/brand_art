@@ -41,7 +41,7 @@ export const Header = () => {
 
               <li>
               <a
-                href="/services"
+                href="/work"
                 className="hover:text-black transition-colors duration-200"
               >
                 Work
@@ -50,7 +50,7 @@ export const Header = () => {
 
                <li>
               <a
-                href="/services"
+                href="/insights"
                 className="hover:text-black transition-colors duration-200"
               >
                 Insights
