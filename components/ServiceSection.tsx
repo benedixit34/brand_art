@@ -82,35 +82,50 @@ export const ServiceSection = () => {
 
     video.play();
 
-    itemsRef.current.forEach((el, i) => {
-      if (!el) return;
-      gsap.set(el, { opacity: i === 0 ? 1 : 0, y: 0 });
+    // Use GSAP matchMedia to handle responsive animation setups smoothly
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      // Desktop setup: Apply initial opacity styling required for transitions
+      itemsRef.current.forEach((el, i) => {
+        if (!el) return;
+        gsap.set(el, { opacity: i === 0 ? 1 : 0, y: 0 });
+      });
+
+      // Desktop setup: Initialize ScrollTriggers
+      sentinelsRef.current.forEach((sentinel, i) => {
+        if (!sentinel || i === 0) return;
+
+        ScrollTrigger.create({
+          trigger: sentinel,
+          start: "top center",
+          onEnter: () => transitionTo(i),
+          onLeaveBack: () => transitionTo(i - 1),
+        });
+      });
     });
 
-    sentinelsRef.current.forEach((sentinel, i) => {
-      if (!sentinel || i === 0) return;
-
-      ScrollTrigger.create({
-        trigger: sentinel,
-        start: "top center",
-        onEnter: () => transitionTo(i),
-        onLeaveBack: () => transitionTo(i - 1),
+    mm.add("(max-width: 1023px)", () => {
+      // Mobile fallback: Clear inline GSAP opacity/transform properties so everything stacks naturally
+      itemsRef.current.forEach((el) => {
+        if (!el) return;
+        gsap.set(el, { clearProps: "all" });
       });
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      mm.revert(); // Automatically clears matchMedia listeners and internal ScrollTriggers
     };
   }, []);
 
   return (
     <div
       ref={wrapperRef}
-      style={{ height: `${services.length * 100}vh` }}
-      className="relative w-full"
+      // Mobile: height handles content length naturally. Desktop: height acts as scroll track.
+      className="relative w-full h-auto lg:h-[500vh]"
     >
-      {/* Invisible sentinels */}
-      <div className="absolute inset-0 flex flex-col pointer-events-none">
+      {/* Invisible sentinels — Only used / rendered on Desktop */}
+      <div className="absolute inset-0 hidden lg:flex flex-col pointer-events-none">
         {services.map((_, i) => (
           <div
             key={i}
@@ -120,36 +135,41 @@ export const ServiceSection = () => {
         ))}
       </div>
 
-      {/* Sticky two-column layout */}
-      <div className="sticky top-0 h-screen grid lg:grid-cols-2 2xl:px-20 lg:py-20 p-4 2xl:gap-x-40 gap-10">
-
-        {/* Left: stacked cards — py-16 gives top/bottom breathing room */}
-        <div className="relative py-16 lg:py-20">
+      {/* Main layout frame — Sticky on desktop, standard grid layout on mobile */}
+      <div className="relative lg:sticky top-0 h-auto lg:h-screen grid grid-cols-1 lg:grid-cols-2 2xl:px-20 lg:py-20 p-6 gap-10 lg:gap-x-40">
+        
+        {/* Left column: Cards container */}
+        <div className="relative flex flex-col gap-12 lg:gap-0 lg:py-20">
           {services.map((service, i) => (
             <div
               key={i}
               ref={(el) => { itemsRef.current[i] = el; }}
-              className="absolute inset-0 py-16 lg:py-20 grid grid-rows-2"
+              // Mobile: Static positioning for dynamic stacking. Desktop: Layered absolutely.
+              className="relative lg:absolute inset-auto lg:inset-0 lg:py-20 grid grid-rows-[auto_auto] gap-4 lg:gap-0"
             >
-              <div className="grid md:grid-cols-2 grid-cols-1">
-                <div className="flex items-end bg-teal-900 text-white h-full w-full p-6">
-                  <h1 className="block md:hidden text-white text-9xl">
-                    {service.number}
+              {/* Header Box */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
+                <div className="flex items-center md:items-end bg-teal-900 text-white min-h-[120px] md:h-full w-full p-6 rounded-sm">
+                  {/* Small screens show number inline */}
+                  <h1 className="block md:hidden text-white text-5xl mr-4 font-bold">
+                    {service.number}.
                   </h1>
-                  <h1 className="lg:text-4xl text-3xl p-6 tracking-tight">
+                  <h1 className="lg:text-4xl text-2xl tracking-tight font-bold">
                     {service.title}
                   </h1>
                 </div>
-                <div className="flex items-center justify-center md:block hidden">
-                  <h1 className="2xl:text-[12em] text-9xl text-teal-900 text-center">
+                {/* Desktop/Tablet number view */}
+                <div className="hidden md:flex items-center justify-center">
+                  <h1 className="2xl:text-[12em] text-8xl text-teal-900 text-center font-bold">
                     {service.number}
                   </h1>
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 grid-cols-1">
+              {/* Description Box */}
+              <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="hidden md:block" />
-                <div className="flex 2xl:text-xl/10 text-md/8 border-[0.2px] border-teal-900 p-6 justify-self-center font-light items-end">
+                <div className="flex text-sm md:text-md/8 xl:text-xl/8 border-[0.2px] border-teal-900 rounded-sm p-6 justify-self-stretch md:justify-self-center font-light items-end">
                   <p className="text-teal-900">{service.description}</p>
                 </div>
               </div>
@@ -157,9 +177,10 @@ export const ServiceSection = () => {
           ))}
         </div>
 
-        <div className="flex items-center justify-center">
-          <div className="relative aspect-square w-full max-w-[700px] overflow-hidden">
-            <div className="absolute inset-0 scale-[1.8]">
+        {/* Right column: Sticky Media/Video Container */}
+        <div className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start lg:self-auto order-first lg:order-last">
+          <div className="relative aspect-square w-full max-w-[400px] lg:max-w-[700px] overflow-hidden rounded-sm">
+            <div className="absolute inset-0 scale-[1.1] lg:scale-[1.8]">
               <video
                 ref={videoRef}
                 muted

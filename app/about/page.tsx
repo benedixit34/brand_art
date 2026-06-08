@@ -13,6 +13,7 @@ export default function Page() {
   const mainRef = useRef(null);
   const serviceContainer = useRef(null);
   const aboutContainer = useRef(null);
+  
   useGSAP(
     () => {
       const aboutSplit = new SplitText(".about_text", {
@@ -26,19 +27,16 @@ export default function Page() {
         duration: 0.8,
         ease: "power4.out",
         stagger: 0.25,
-          scrollTrigger: {
+        scrollTrigger: {
           trigger: aboutContainer.current,
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
-      
       });
-
 
       const serviceSplit = new SplitText(".animated-text", {
         type: "lines, words",
       });
-
 
       gsap.from(serviceSplit.words, {
         y: 40,
@@ -61,125 +59,135 @@ export default function Page() {
     },
     { scope: mainRef },
   );
+
   return (
     <main ref={mainRef}>
-  
-        
-       
-          <section className="flex items-center lg:flex-row flex-col gap-x-20">
-            <div className="xl:w-1/3 w-full">
-              <img
-                src="/img/about_v2.jpg"
-                alt=""
-                data-cursor="VIEW"
-                className="xl:h-screen object-cover object-right p-4 md:p-0 animate-slide-in-left"
-              />
-            </div>
+      {/* Hero Section */}
+      <section className="flex items-center lg:flex-row flex-col gap-y-8 lg:gap-y-0 lg:gap-x-10 xl:gap-x-20">
+        <div className="lg:w-1/2 xl:w-1/3 w-full">
+          <img
+            src="/img/about_v2.jpg"
+            alt="About Brand Art"
+            data-cursor="VIEW"
+            className="lg:h-screen object-cover object-right p-4 md:p-6 lg:p-0 animate-slide-in-left w-full"
+          />
+        </div>
 
-            <div className="py-10 px-4 xl:w-1/2 w-full">
-              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5">
-                We craft the true essence of <span className="inline-block bg-teal-900 text-yellow-400 text-6xl px-3 py-1 rotate-[-6deg] text-5xl tracking-normal font-bold">
-  Art
-</span>
-  
-              </h1>
-              <p className="lg:text-xl/10 text-lg/10 font-light">
-                Our commitment to authenticity and strength lies in our ability
-                to deeply understand and translate cultural expression into
-                powerful brand narratives
-              </p>
-            </div>
-          </section>
-      
+        <div className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl/24 font-semibold tracking-tighter pb-4 sm:pb-5">
+            We craft the true essence of{" "}
+            <span className="inline-block bg-teal-900 text-yellow-400 px-2 sm:px-3 py-0.5 sm:py-1 rotate-[-6deg] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-normal font-bold">
+              Art
+            </span>
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl lg:text-xl/10 font-light">
+            Our commitment to authenticity and strength lies in our ability
+            to deeply understand and translate cultural expression into
+            powerful brand narratives
+          </p>
+        </div>
+      </section>
 
-        <section className="bg-teal-900 xl:py-30 xl:px-40 py-20 px-4 font-light md:text-center text">
-          <div className="space-y-4 lg:space-y-8 text-white" ref={aboutContainer}>
-            <h1 className="text-3xl text-yellow-500 font-bold">ABOUT US</h1>
-            <h3 className="2xl:text-4xl/20 lg:text-xl/10 text-lg/10 lg:tracking-tight about_text">
-              We’re an independent, insight-led creative design agency obsessed
-              with the power of culture and emotion. Every brand has a truth —
-              we help you find it, shape it, and express it beautifully.
-              Our work is designed to move people and spark conversations. To
-              us, branding isn’t just what you say , it’s how you show up —
-              everywhere. With experience across industries , from tech to lifestyle , FMCG
-              to fashion , our team brings world-class thinking with local
-              insight. We’re daring. We’re human. We’re always a little
-              unexpected.
-            </h3>
-          </div>
-        </section>
+      {/* About Us Section */}
+      <section className="bg-teal-900 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40 font-light">
+        <div className="space-y-4 lg:space-y-6 xl:space-y-8 text-white text-center md:text-left" ref={aboutContainer}>
+          <h1 className="text-2xl sm:text-3xl text-yellow-500 font-bold tracking-wide">
+            ABOUT US
+          </h1>
+          <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 leading-relaxed lg:tracking-tight about_text max-w-6xl mx-auto md:mx-0">
+            We're an independent, insight-led creative design agency obsessed
+            with the power of culture and emotion. Every brand has a truth —
+            we help you find it, shape it, and express it beautifully.
+            Our work is designed to move people and spark conversations. To
+            us, branding isn't just what you say, it's how you show up —
+            everywhere. With experience across industries, from tech to lifestyle, FMCG
+            to fashion, our team brings world-class thinking with local
+            insight. We're daring. We're human. We're always a little
+            unexpected.
+          </h3>
+        </div>
+      </section>
 
-        <section className="2xl:p-40 xl:p-20 py-20 px-4">
-          <div className="grid xl:grid-cols-2 gap-x-30 space-y-10 items-center">
-            <div className="w-full">
-              <h1 className="2xl:text-8xl/24 xl:text-6xl/18 text-4xl/12 font-semibold tracking-tighter pb-5">
-                We speak the language of <span className="inline-block bg-teal-900 text-yellow-400 text-6xl px-3 py-1 rotate-[-6deg] tracking-tight">
-Culture
-</span>
-                
-              </h1>
-              <p className="lg:text-xl/10 text-lg/10 font-light">
-                We craft ingenious creative solutions that resonate with your
-                target community through cultural authenticity and emotional
-                depth.
-              </p>
-            </div>
-
-            <div className="w-full">
-              <img src="/img/about_v3.jpg" alt="" className="w-screen animate-slide-in-right" />
-            </div>
-          </div>
-        </section>
-        <section
-          className="relative z-10 bg-teal-900 xl:p-40 py-20 px-4"
-          ref={serviceContainer}
-        >
-          <div className="space-y-8">
-            <h1 className="text-3xl text-center text-yellow-500 font-bold">
-              OUR SERVICES
+      {/* Culture Section */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-40">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 2xl:gap-30 items-center">
+          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl/24 font-semibold tracking-tighter pb-3 sm:pb-4 md:pb-5">
+              We speak the language of{" "}
+              <span className="inline-block bg-teal-900 text-yellow-400 px-2 sm:px-3 py-0.5 sm:py-1 rotate-[-6deg] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl tracking-tight">
+                Culture
+              </span>
             </h1>
-            <h3
-              id="highlight-text"
-              className="2xl:text-4xl/20 text-lg/10 text-center tracking-tight animated-text text-white font-light"
-            >
-              Everything We Do is Filtered Through the Lens of Brand Experience
-              At Brand Art, we don’t separate branding from campaigns or
-              strategy from culture. We see the full picture. We build systems
-              that speak with consistency, and ideas that burst through the
-              noise. Whether you're starting out, scaling up, or breaking
-              through, our services are built to adapt to your ambition.
-            </h3>
+            <p className="text-base sm:text-lg md:text-xl lg:text-xl/10 font-light">
+              We craft ingenious creative solutions that resonate with your
+              target community through cultural authenticity and emotional
+              depth.
+            </p>
           </div>
-        </section>
 
-        <section className="2xl:p-40 xl:px-20 py-20 px-4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     0">
-          <div className="grid xl:grid-cols-2 2xl:gap-x-30 lg:gap-10 gap-4 items-center">
-            <div className="w-full space-y-4">
-              <h3 className="text-2xl">WHAT WE DO</h3>
-              <p className="2xl:text-6xl/20 xl:text-5xl/16 text-3xl/12 font-semibold tracking-tighter">
-                Everything From Strategy to Storytelling to <span className="inline-block bg-teal-900 text-yellow-400 px-3 py-1 rotate-[-4deg] text-5xl">
-Creative
-</span> Development
-                to Standout Execution
-              </p>
-            </div>
-
-            <div className="w-full lg:space-y-8 space-y-4 xl:text-xl/10 text-lg/10 font-light">
-              <p>
-                We help brands clarify their voice, sharpen their image, and
-                connect with the people that matter through work that is
-                creatively daring and culturally grounded.
-              </p>
-              <p>
-                From positioning to activation, we design brand journeys that
-                are cohesive, human, and memorable. Whether we’re building a
-                brand from scratch or evolving a legacy, we always begin with
-                intention and end with impact.
-              </p>
-            </div>
+          <div className="w-full">
+            <img 
+              src="/img/about_v3.jpg" 
+              alt="Cultural authenticity" 
+              className="w-full h-auto rounded-lg animate-slide-in-right" 
+            />
           </div>
-        </section>
-     
+        </div>
+      </section>
+
+      {/* Our Services Section */}
+      <section
+        className="relative z-10 bg-teal-900 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
+        ref={serviceContainer}
+      >
+        <div className="space-y-4 sm:space-y-6 md:space-y-8">
+          <h1 className="text-2xl sm:text-3xl text-center text-yellow-500 font-bold tracking-wide">
+            OUR SERVICES
+          </h1>
+          <h3
+            id="highlight-text"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 text-center tracking-tight animated-text text-white font-light max-w-6xl mx-auto leading-relaxed"
+          >
+            Everything We Do is Filtered Through the Lens of Brand Experience.
+            At Brand Art, we don't separate branding from campaigns or
+            strategy from culture. We see the full picture. We build systems
+            that speak with consistency, and ideas that burst through the
+            noise. Whether you're starting out, scaling up, or breaking
+            through, our services are built to adapt to your ambition.
+          </h3>
+        </div>
+      </section>
+
+      {/* What We Do Section */}
+      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-40">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 2xl:gap-30 items-start">
+          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6">
+            <h3 className="text-xl sm:text-2xl tracking-wide">WHAT WE DO</h3>
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-6xl/20 font-semibold tracking-tighter leading-tight">
+              Everything From Strategy to Storytelling to{" "}
+              <span className="inline-block bg-teal-900 text-yellow-400 px-2 sm:px-3 py-0.5 sm:py-1 rotate-[-4deg] text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
+                Creative
+              </span>{" "}
+              Development to Standout Execution
+            </p>
+          </div>
+
+          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-8 xl:text-xl/10 text-base sm:text-lg md:text-xl font-light">
+            <p>
+              We help brands clarify their voice, sharpen their image, and
+              connect with the people that matter through work that is
+              creatively daring and culturally grounded.
+            </p>
+            <p>
+              From positioning to activation, we design brand journeys that
+              are cohesive, human, and memorable. Whether we're building a
+              brand from scratch or evolving a legacy, we always begin with
+              intention and end with impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <ContactSection />
     </main>
   );
