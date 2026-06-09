@@ -82,17 +82,17 @@ export const ServiceSection = () => {
 
     video.play();
 
-    // Use GSAP matchMedia to handle responsive animation setups smoothly
+
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
-      // Desktop setup: Apply initial opacity styling required for transitions
+   
       itemsRef.current.forEach((el, i) => {
         if (!el) return;
         gsap.set(el, { opacity: i === 0 ? 1 : 0, y: 0 });
       });
 
-      // Desktop setup: Initialize ScrollTriggers
+ 
       sentinelsRef.current.forEach((sentinel, i) => {
         if (!sentinel || i === 0) return;
 
@@ -144,13 +144,11 @@ export const ServiceSection = () => {
             <div
               key={i}
               ref={(el) => { itemsRef.current[i] = el; }}
-              // Mobile: Static positioning for dynamic stacking. Desktop: Layered absolutely.
               className="relative lg:absolute inset-auto lg:inset-0 lg:py-20 grid grid-rows-[auto_auto] gap-4 lg:gap-0"
             >
-              {/* Header Box */}
+      
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
                 <div className="flex items-center md:items-end bg-teal-900 text-white min-h-[120px] md:h-full w-full p-6 rounded-sm">
-                  {/* Small screens show number inline */}
                   <h1 className="block md:hidden text-white text-5xl mr-4 font-bold">
                     {service.number}.
                   </h1>
@@ -158,7 +156,6 @@ export const ServiceSection = () => {
                     {service.title}
                   </h1>
                 </div>
-                {/* Desktop/Tablet number view */}
                 <div className="hidden md:flex items-center justify-center">
                   <h1 className="2xl:text-[12em] text-8xl text-teal-900 text-center font-bold">
                     {service.number}
@@ -177,7 +174,7 @@ export const ServiceSection = () => {
           ))}
         </div>
 
-        {/* Right column: Sticky Media/Video Container */}
+   
         <div className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start lg:self-auto order-first lg:order-last">
           <div className="relative aspect-square w-full max-w-[400px] lg:max-w-[700px] overflow-hidden rounded-sm">
             <div className="absolute inset-0 scale-[1.1] lg:scale-[1.8]">

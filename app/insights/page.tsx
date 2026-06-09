@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ContactSection } from "@/components/ContactSection";
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -89,7 +90,7 @@ export default function Page() {
       );
     }
 
-    // Animate insight cards as they scroll into view
+   
     insightsRef.current.forEach((insight, index) => {
       if (insight) {
         gsap.fromTo(insight,
@@ -115,7 +116,7 @@ export default function Page() {
       }
     });
 
-    // Cleanup
+
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
@@ -123,7 +124,8 @@ export default function Page() {
 
   return (
     <>
-      <main className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 py-8 sm:py-12 md:py-16 lg:py-20">
+    <main>
+      <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 py-8 sm:py-12 md:py-16 lg:py-20">
         {/* Header */}
         <h1 
           ref={headerRef}
@@ -176,6 +178,10 @@ export default function Page() {
             Load More Insights
           </button>
         </div>
+
+       
+      </section>
+      <ContactSection />
       </main>
     </>
   );

@@ -81,7 +81,7 @@ export default function CustomCursor() {
       });
     };
 
-   
+    
     const onOut = (e: Event) => {
      
       active.current = false;

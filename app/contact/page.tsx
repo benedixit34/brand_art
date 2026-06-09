@@ -1,65 +1,72 @@
-"use client"; // Required for useState
+"use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import GeneralForm from "@/components/GeneralForm";
 import HireForm from "@/components/HireForm";
 import PartnerForm from "@/components/PartnerForm";
-import CustomCursor from "@/components/CustomCursor";
+
+type TabId = "hire" | "partner" | "general";
 
 export default function Page() {
-  const [activeTab, setActiveTab] = useState("hire");
-  
+  const [activeTab, setActiveTab] = useState<TabId>("hire");
+  const tabsRef = useRef<HTMLDivElement>(null);
+
+  const tabs: TabId[] = ["hire", "partner", "general"];
+  const labels: Record<TabId, string> = { 
+    hire: "Hire Us", 
+    partner: "Partner With Us", 
+    general: "General Inquiry" 
+  };
+  const forms: Record<TabId, React.ReactNode> = { 
+    hire: <HireForm />, 
+    partner: <PartnerForm />, 
+    general: <GeneralForm /> 
+  };
 
   return (
-    <>
-    <CustomCursor />
-      <main className="min-h-screen bg-white overflow-hidden">
-    
-        <section className="grid lg:grid-cols-2 grid-cols-1 2xl:p-40 xl:p-20 px-10 py-20 gap-20">
-          <div className="lg:space-y-10 space-y-6 lg:border-r-1 lg:pr-20">
-            <h1 className="2xl:text-8xl/24 text-4xl/14 font-bold tracking-tighter">
-              Big Dreams Need Bold <span className="text-yellow-400">Collaborators.</span>
-            </h1>
-            <p className="text-xl/12 font-light">
-              Whether you're launching something new, refreshing your brand, or
-              looking to break through the noise—we’d love to build it with you.
-            </p>
-          </div>
+    <main className="min-h-screen bg-white overflow-hidden">
+      <section className="grid lg:grid-cols-2 grid-cols-1 2xl:p-40 xl:p-20 px-10 py-20 gap-20">
+        
+      
+<div className="lg:space-y-8 space-y-6 lg:border-r lg:border-gray-200 lg:pr-20">
+  <h1 className="2xl:text-7xl xl:text-6xl lg:text-5xl text-4xl font-bold tracking-tighter leading-[1.2]">
+    Big Dreams Need Bold <span className="text-yellow-400 inline-block">Collaborators.</span>
+  </h1>
+  <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
+    Whether you're launching something new, refreshing your brand, or
+    looking to break through the noise — we'd love to build it with you.
+  </p>
+</div>
 
-          <div className="pb-20 flex flex-col gap-y-10">
-            <div className="grid grid-cols-3 2xl:text-xl xl:text-lg text-sm font-medium tracking-tight border-1 bg-white place-content-stretch text-center cursor-pointer">
-              
-              <div 
-                onClick={() => setActiveTab("hire")}
-                className={`md:p-4 p-2 border-r-1 transition-colors ${activeTab === 'hire' ? 'bg-yellow-400' : 'bg-white'}`}
-              >
-                <h1>Hire Us</h1>
-              </div>
-
-              <div 
-                onClick={() => setActiveTab("partner")}
-                className={`md:p-4 p-2 border-r-1 transition-colors ${activeTab === 'partner' ? 'bg-yellow-400' : 'bg-white'}`}
-              >
-                <h1>Partner With Us</h1>
-              </div>
-
-              <div 
-                onClick={() => setActiveTab("general")}
-                className={`md:p-4 p-2 transition-colors ${activeTab === 'general' ? 'bg-yellow-400' : 'bg-white'}`}
-              >
-                <h1>General Inquiry</h1>
-              </div>
-            </div>
-
-         
-            <div className="mt-10">
-              {activeTab === "hire" && <HireForm />}
-            {activeTab === "partner" && <PartnerForm />}
-            {activeTab === "general" && <GeneralForm />}
+       
+        <div className="flex flex-col">
+          <div ref={tabsRef} className="pb-20">
+            <div className="flex flex-wrap border border-gray-200 bg-white rounded-lg overflow-hidden">
+              {tabs.map((tab, index) => (
+                <div
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`
+                    flex-1 min-w-[120px] sm:min-w-[140px] md:min-w-[160px]
+                    p-2 sm:p-3 md:p-4 text-center cursor-pointer transition-all duration-300
+                    ${activeTab === tab 
+                      ? "bg-yellow-400 text-black" 
+                      : "bg-white text-gray-700 hover:bg-gray-50"
+                    }
+                    ${index < tabs.length - 1 ? "border-r border-gray-200" : ""}
+                  `}
+                >
+                  <h1 className="text-xs sm:text-sm md:text-base lg:text-sm 2xl:text-base font-medium uppercase tracking-tight">
+                    {labels[tab]}
+                  </h1>
+                </div>
+              ))}
             </div>
           </div>
-        </section>
-      </main>
-    </>
+          <div>{forms[activeTab]}</div>
+        </div>
+
+      </section>
+    </main>
   );
 }

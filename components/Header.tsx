@@ -102,10 +102,10 @@ export const Header = () => {
           <div className="hidden md:block">
             <a
               href="/contact"
-              className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-sm bg-black text-white text-base lg:text-lg hover:bg-gray-800 transition-all duration-300 inline-flex items-center gap-2 hover:gap-3"
+              className="inline-block bg-teal-900 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-teal-800 hover:scale-105 shadow-md"
             >
               Get in Touch 
-              <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
+              <FontAwesomeIcon icon={faEnvelope} className="text-md ml-2" />
             </a>
           </div>
 

@@ -1,78 +1,95 @@
+"use client";
+
+import { useState } from "react";
+
 export default function HireForm() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    message: "",
+    services: [] as string[],
+  });
+
+  const servicesList = [
+    "Brand Strategy",
+    "Creative Concept Development",
+    "Logo and Visual Identity",
+    "Brand Communication",
+    "Experience Design",
+    "Others",
+  ];
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
   return (
-    <>
-      <form action="" method="post" className="flex flex-col w-full">
-        <input
-          type="text"
-          name="full_name"
-          id=""
-          placeholder="Enter Your Full Name"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        />
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="Enter Your Email Address"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-12">
+      <input
+        type="text"
+        name="fullName"
+        value={formData.fullName}
+        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+        required
+        placeholder="Enter Your Full Name"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors"
+      />
 
-        <fieldset className="text-xl font-light mb-20">
-          <legend className="mb-10">
-            <span className="font-bold">
-              What Service Are You Looking For?
-            </span>
-          </legend>
-          <div className="flex gap-10 flex-wrap">
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Brand Strategy</label>
-            </div>
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        required
+        placeholder="Enter Your Email Address"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors"
+      />
 
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Creative Concept Development</label>
-            </div>
+      <fieldset className="space-y-6">
+        <legend className="text-xl font-bold text-gray-800">
+          What Service Are You Looking For?
+        </legend>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {servicesList.map((service) => (
+            <label key={service} className="flex items-center space-x-3 cursor-pointer">
+              <input
+                type="checkbox"
+                value={service}
+                checked={formData.services.includes(service)}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  setFormData((prev) => ({
+                    ...prev,
+                    services: checked
+                      ? [...prev.services, service]
+                      : prev.services.filter((s) => s !== service),
+                  }));
+                }}
+                className="w-5 h-5 text-teal-600 rounded border-gray-300 focus:ring-teal-500"
+              />
+              <span className="text-gray-700 font-light">{service}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
 
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Logo and Visual Identity</label>
-            </div>
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        required
+        rows={4}
+        placeholder="Write Your Message"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors resize-y"
+      />
 
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Brand Communication</label>
-            </div>
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Experience Design</label>
-            </div>
-
-            <div className="space-x-2">
-              <input type="checkbox" name="brand_strategy" id="" />
-              <label htmlFor="">Others</label>
-            </div>
-          </div>
-        </fieldset>
-
-        <textarea
-          id=""
-          placeholder="Write Your Message"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        ></textarea>
-        <button
-          type="submit"
-          className="self-start border-1 text-xl px-10 py-4 hover:bg-teal-400 font-medium"
-        >
-          Send Message
-        </button>
-      </form>
-    </>
+      <button
+        type="submit"
+        className="self-start inline-block bg-teal-900 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-teal-800 hover:scale-105 shadow-md"
+      >
+        Send Message →
+      </button>
+    </form>
   );
 }

@@ -1,42 +1,61 @@
+"use client";
+
+import { useState } from "react";
+
 export default function PartnerForm() {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    message: "",
+    services: [] as string[],
+  });
+
+
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
   return (
-    <>
-      <form action="" method="post" className="flex flex-col w-full">
-        <input
-          type="text"
-          name="full_name"
-          id=""
-          placeholder="Enter Your Full Name"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        />
-        <input
-          type="email"
-          name="email"
-          id=""
-          placeholder="Enter Your Email Address"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        />
+    <form onSubmit={handleSubmit} className="flex flex-col w-full space-y-12">
+      <input
+        type="text"
+        name="fullName"
+        value={formData.fullName}
+        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+        required
+        placeholder="Enter Your Full Name"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors"
+      />
 
-     
+      <input
+        type="email"
+        name="email"
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        required
+        placeholder="Enter Your Email Address"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors"
+      />
 
-        <textarea
-          id=""
-          placeholder="Write Your Message"
-          className="border-b-1 font-light text-xl pb-4 mb-20 outline-none focus:outline-none focus:ring-0 focus:border-teal-400 
-         focus:shadow-[0_3px_0_0_rgba(45,212,191,0.9)]
-         transition duration-300"
-        ></textarea>
-        <button
-          type="submit"
-          className="self-start border-1 text-xl px-10 py-4 hover:bg-teal-400 font-medium"
-        >
-          Send Message
-        </button>
-      </form>
-    </>
+
+      <textarea
+        name="message"
+        value={formData.message}
+        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+        required
+        rows={4}
+        placeholder="Write Your Message"
+        className="w-full border-b-2 border-gray-300 text-base sm:text-lg md:text-xl leading-relaxed pb-3 outline-none focus:border-teal-500 transition-colors resize-y"
+      />
+
+      <button
+        type="submit"
+        className="self-start inline-block bg-teal-900 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-teal-800 hover:scale-105 shadow-md"
+      >
+        Send Message →
+      </button>
+    </form>
   );
 }

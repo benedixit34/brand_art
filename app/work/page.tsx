@@ -263,7 +263,7 @@ export default function Page() {
                   href={project.href} 
                   className="text-lg sm:text-xl md:text-2xl tracking-tight hover:underline underline-offset-4 transition-all"
                 >
-                  Explore →
+                  Explore 
                 </a>
               </div>
               
@@ -278,12 +278,6 @@ export default function Page() {
           ))}
         </div>
 
-        {/* Empty State (optional) */}
-        {filteredProjects.length === 0 && (
-          <div className="text-center py-20">
-            <p className="text-xl text-gray-500">No projects found in this category.</p>
-          </div>
-        )}
       </main>
       <ContactSection />
     </>
