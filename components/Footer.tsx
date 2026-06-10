@@ -181,12 +181,12 @@ export const Footer = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2 sm:px-5 sm:py-3 bg-zinc-700 border border-zinc-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors w-full sm:w-64"
+                className="px-4 py-2 sm:px-5 sm:py-3 bg-zinc-700 border border-zinc-600 rounded-sm text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors w-full sm:w-64"
                 required
               />
               <button
                 type="submit"
-                className="px-6 sm:px-8 py-2 sm:py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-400 transition-colors duration-300"
+                className="px-6 sm:px-8 py-2 sm:py-3 bg-yellow-500 text-black font-semibold rounded-sm hover:bg-yellow-400 transition-colors duration-300"
               >
                 Subscribe
               </button>

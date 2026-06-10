@@ -98,13 +98,15 @@ export default function Page() {
   });
 
 
-  useEffect(() => {
-
+useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Header animation
     if (headerRef.current) {
-      gsap.fromTo(headerRef.current,
+      gsap.fromTo(
+        headerRef.current,
         {
           opacity: 0,
-          y: 50
+          y: 50,
         },
         {
           opacity: 1,
@@ -114,40 +116,40 @@ export default function Page() {
           scrollTrigger: {
             trigger: headerRef.current,
             start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
+          },
         }
       );
     }
 
-
+    // Tabs container animation
     if (tabsRef.current) {
-      gsap.fromTo(tabsRef.current,
+      gsap.fromTo(
+        tabsRef.current,
         {
           opacity: 0,
           y: 30,
-          scale: 0.95
+          scale: 0.95,
         },
         {
           opacity: 1,
           y: 0,
           scale: 1,
           duration: 0.8,
-          delay: 0.2,
           ease: "back.out(0.4)",
           scrollTrigger: {
             trigger: tabsRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
+          },
         }
       );
     }
 
-  
-    const tabElements = document.querySelectorAll('.tab-item');
-    if (tabElements.length > 0) {
-      gsap.fromTo(tabElements,
+    // Tab items animation
+    const tabElements = document.querySelectorAll(".tab-item");
+
+    if (tabElements.length) {
+      gsap.fromTo(
+        tabElements,
         {
           opacity: 0,
           x: -20,
@@ -158,57 +160,71 @@ export default function Page() {
           duration: 0.6,
           stagger: 0.08,
           ease: "power2.out",
-          scrollTrigger: {
-            trigger: tabsRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse"
-          }
         }
       );
     }
 
+    // Project cards animation
+    projectsRef.current.forEach((project, index) => {
+      if (!project) return;
 
-    if (projectsRef.current.length > 0) {
-      projectsRef.current.forEach((project, index) => {
-        if (project) {
-          gsap.fromTo(project,
-            {
-              opacity: 0,
-              y: 60,
-              scale: 0.95
-            },
-            {
-              opacity: 1,
-              y: 0,
-              scale: 1,
-              duration: 0.8,
-              delay: index * 0.1,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: project,
-                start: "top 85%",
-                toggleActions: "play none none reverse"
-              }
-            }
-          );
+      gsap.fromTo(
+        project,
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.95,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          delay: index * 0.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: project,
+            start: "top 85%",
+          },
         }
-      });
-    }
+      );
+    });
+  });
+
+  return () => ctx.revert();
+}, []);
 
 
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, [filteredProjects]); 
+useEffect(() => {
+  requestAnimationFrame(() => {
+    ScrollTrigger.refresh();
 
+    gsap.fromTo(
+      projectsRef.current.filter(Boolean),
+      {
+        opacity: 0,
+        y: 40,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: "power2.out",
+      }
+    );
+  });
+}, [activeTab]);
 
-   const setProjectRef = (index: number) => (el: HTMLDivElement | null) => {
+const setProjectRef =
+  (index: number) => (el: HTMLDivElement | null) => {
     projectsRef.current[index] = el;
   };
 
   return (
       <>
-      <main className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 py-8 sm:py-12 md:py-16 lg:py-20">
+      <main>
+      <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 2xl:px-40 py-8 sm:py-12 md:py-16 lg:py-20">
      
         <h1 ref={headerRef} className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
           Portfolio
@@ -278,8 +294,10 @@ export default function Page() {
           ))}
         </div>
 
-      </main>
+      </section>
       <ContactSection />
+      </main>
+      
     </>
   );
 }

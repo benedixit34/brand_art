@@ -4,6 +4,10 @@ import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ArrowDownRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+
+gsap.registerPlugin(ScrollTrigger)
 
 export const ContactSection = () => {
   const iconRef = useRef<SVGSVGElement | null>(null);
@@ -28,7 +32,7 @@ export const ContactSection = () => {
   };
 
   useEffect(() => {
-    // Entrance animation for the section
+ 
     if (sectionRef.current) {
       gsap.fromTo(sectionRef.current,
         {
@@ -49,7 +53,7 @@ export const ContactSection = () => {
       );
     }
 
-    // Stagger animation for text and link
+
     if (textRef.current && linkRef.current) {
       gsap.fromTo([textRef.current, linkRef.current],
         {
