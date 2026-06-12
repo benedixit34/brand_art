@@ -89,7 +89,7 @@ export const ContactSection = () => {
     >
       <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20 2xl:px-40 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 space-y-3 sm:space-y-4 md:space-y-6">
         
-        {/* CONTACT Label */}
+       
         <p 
           ref={textRef}
           className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium tracking-wider"
@@ -97,7 +97,7 @@ export const ContactSection = () => {
           CONTACT
         </p>
 
-        {/* Main CTA Link */}
+      
         <Link
           href="/contact"
           ref={linkRef}
@@ -106,22 +106,22 @@ export const ContactSection = () => {
           onMouseLeave={onLeave}
           data-cursor="CLICK"
         >
-          {/* Text with responsive font sizes */}
+          
           <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl leading-tight">
             Let's Talk Art
           </span>
 
-          {/* Icon with responsive sizing */}
+         
           <ArrowDownRightIcon
             ref={iconRef}
             className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 2xl:w-20 2xl:h-20 flex-shrink-0 transition-transform duration-300 group-hover:rotate-12"
           />
         </Link>
 
-        {/* Optional: Decorative line */}
+  
         <div className="w-full h-px bg-black/20 mt-4 sm:mt-6 md:mt-8"></div>
         
-        {/* Optional: Supporting text */}
+   
         <p className="text-sm sm:text-base md:text-lg text-black/60 max-w-2xl mt-4 sm:mt-6">
           Ready to bring your brand vision to life? Let's collaborate and create something extraordinary together.
         </p>

@@ -4,12 +4,21 @@ import { useRef, useState } from "react";
 import GeneralForm from "@/components/GeneralForm";
 import HireForm from "@/components/HireForm";
 import PartnerForm from "@/components/PartnerForm";
+import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
+import { useEaseAnimation } from "@/hooks/useEaseAnimation";
+
+
 
 type TabId = "hire" | "partner" | "general";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<TabId>("hire");
   const tabsRef = useRef<HTMLDivElement>(null);
+  const { setRef: setFormRef } = useGroupScrollAnimation(activeTab)
+
+  useEaseAnimation(tabsRef);
+ 
+  
 
   const tabs: TabId[] = ["hire", "partner", "general"];
   const labels: Record<TabId, string> = { 
@@ -29,7 +38,7 @@ export default function Page() {
         
       
 <div className="lg:space-y-8 space-y-6 lg:border-r lg:border-gray-200 lg:pr-20">
-  <h1 className="2xl:text-7xl xl:text-6xl lg:text-5xl text-4xl font-bold tracking-tighter leading-[1.2]">
+  <h1 className="xl:text-6xl text-4xl font-bold tracking-tighter leading-[1.2]">
     Big Dreams Need Bold <span className="text-yellow-400 inline-block">Collaborators.</span>
   </h1>
   <p className="text-base sm:text-lg md:text-xl leading-relaxed text-gray-700">
@@ -63,7 +72,7 @@ export default function Page() {
               ))}
             </div>
           </div>
-          <div>{forms[activeTab]}</div>
+          <div ref={setFormRef(0)}>{forms[activeTab]}</div>
         </div>
 
       </section>

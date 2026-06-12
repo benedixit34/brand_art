@@ -58,11 +58,12 @@ export const Scattered = () => {
   }, { scope: container });
 
   return (
+    <>
     <div
       ref={container}
-      className="h-screen flex items-center justify-center relative"
+      className="h-screen hidden lg:flex items-center justify-center relative"
     >
-      <h1 className="target-text 2xl:text-[60px]/22 text-[30px]/12 lg:text-center text-left tracking-tighter font-bold 2xl:max-w-4/5">
+      <h1 className="target-text 2xl:text-[60px]/22 text-[45px]/18 lg:text-center text-left tracking-tighter font-bold max-w-4/5">
         <span className="text-teal-900 font-bold">
           <span className="stay inline-block">Brand Art</span> & Communications
         </span>{" "}
@@ -74,5 +75,21 @@ export const Scattered = () => {
         <span className="stay inline-block">experiences.</span>
       </h1>
     </div>
+
+    <div
+      className="h-full lg:hidden flex items-center justify-center relative py-20 px-6"
+    >
+      <h1 className="text-3xl sm:text-4xl md:text-5xl leading-relaxed text-left tracking-tighter font-bold 2xl:max-w-4/5">
+        <span className="text-teal-900 font-bold">
+         Brand Art & Communications
+        </span> specializes in cultural
+        craftsmanship and emotion-driven
+       design, offering a unique
+        blend of creative services
+        tailored to elevate brands through authentic and engaging
+       experiences.
+      </h1>
+    </div>
+    </>
   );
 };

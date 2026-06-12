@@ -5,6 +5,9 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactSection } from "@/components/ContactSection";
+import { useEaseAnimation } from "@/hooks/useEaseAnimation";
+import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
+
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -61,67 +64,11 @@ const insights = [
 
 export default function Page() {
   const headerRef = useRef<HTMLHeadingElement>(null);
-  const insightsRef = useRef<(HTMLDivElement | null)[]>([]);
+  
+  useEaseAnimation(headerRef)
+  const {setRef: setInsightRef} = useGroupScrollAnimation()
 
-  // Set up refs for insight cards
-  const setInsightRef = (index: number) => (el: HTMLDivElement | null) => {
-    insightsRef.current[index] = el;
-  };
-
-  useEffect(() => {
-    // Animation for header
-    if (headerRef.current) {
-      gsap.fromTo(headerRef.current,
-        {
-          opacity: 0,
-          y: 50
-        },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headerRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse"
-          }
-        }
-      );
-    }
-
-   
-    insightsRef.current.forEach((insight, index) => {
-      if (insight) {
-        gsap.fromTo(insight,
-          {
-            opacity: 0,
-            y: 60,
-            scale: 0.95
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.7,
-            delay: index * 0.1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: insight,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          }
-        );
-      }
-    });
-
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
+  
   return (
     <>
     <main>

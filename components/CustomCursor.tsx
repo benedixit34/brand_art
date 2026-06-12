@@ -13,38 +13,61 @@ export default function CustomCursor() {
   const ringRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
 
-  const mouse = useRef<MousePos>({ x: 0, y: 0 });
+  const mouse = useRef<MousePos>({ x: -100, y: -100 });
   const active = useRef(false);
+  const currentLabel = useRef("");
 
   useEffect(() => {
+    // Skip on touch devices — no real cursor to replace
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (isTouch) return;
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     const textEl = textRef.current;
 
     if (!dot || !ring || !textEl) return;
 
-    gsap.set([dot, ring], { opacity: 0, scale: 0 });
+    gsap.set([dot, ring], { opacity: 0, scale: 0, x: -100, y: -100 });
 
     const onMove = (e: MouseEvent) => {
-      mouse.current = {
-        x: e.clientX,
-        y: e.clientY,
-      };
+      mouse.current = { x: e.clientX, y: e.clientY };
+
+      // Keep cursor following even when inactive, just invisible,
+      // so it doesn't "jump" from a stale position on activation
+      gsap.to([dot, ring], {
+        x: mouse.current.x,
+        y: mouse.current.y,
+        duration: active.current ? 0.12 : 0,
+        ease: "power3.out",
+      });
     };
 
     window.addEventListener("mousemove", onMove);
 
     const getTargetType = (target: HTMLElement) => {
       const img = target.closest("img");
-
-      if (img && !img.classList.contains("logo")) {
-        return "image";
-      }
+      if (img && !img.classList.contains("logo")) return "image";
 
       const link = target.closest(".contact-link");
       if (link) return "link";
 
       return null;
+    };
+
+    const setLabel = (label: string) => {
+      if (currentLabel.current === label) return;
+      currentLabel.current = label;
+
+      gsap.to(textEl, {
+        opacity: 0,
+        scale: 0.7,
+        duration: 0.1,
+        onComplete: () => {
+          textEl.textContent = label;
+          gsap.to(textEl, { opacity: 1, scale: 1, duration: 0.15 });
+        },
+      });
     };
 
     // ENTER
@@ -58,64 +81,47 @@ export default function CustomCursor() {
       document.body.style.cursor = "none";
 
       const label = type === "image" ? "VIEW" : "CLICK";
-
-      gsap.to(textEl, {
-        opacity: 0,
-        scale: 0.7,
-        duration: 0,
-        onComplete: () => {
-          textEl.textContent = label;
-
-          gsap.to(textEl, {
-            opacity: 1,
-            scale: 1,
-            duration: 0.2,
-          });
-        },
-      });
+      setLabel(label);
 
       gsap.to([dot, ring], {
         opacity: 1,
         scale: 1,
-        duration: 0.2,
+        duration: 0.25,
+        ease: "back.out(1.7)",
       });
     };
 
-    
-    const onOut = (e: Event) => {
-     
-      active.current = false;
-      document.body.style.cursor = "auto";
+    // LEAVE — only deactivate if we're not moving to a related element
+    // that's also within a "hot" zone (prevents flicker between
+    // nested children of the same target)
+    const onOut = (e: PointerEvent) => {
+      const target = e.target as HTMLElement;
+      const related = e.relatedTarget as HTMLElement | null;
 
-      gsap.to([dot, ring], {
-        opacity: 0,
-        scale: 0,
-        duration: 0.2,
-      });
+      const fromType = getTargetType(target);
+      const toType = related ? getTargetType(related) : null;
+
+      if (fromType && !toType) {
+        active.current = false;
+        currentLabel.current = "";
+        document.body.style.cursor = "auto";
+
+        gsap.to([dot, ring], {
+          opacity: 0,
+          scale: 0,
+          duration: 0.2,
+        });
+      }
     };
 
     document.addEventListener("pointerover", onOver);
-    document.addEventListener("pointerout", onOut);
-
-
-    const ticker = () => {
-      if (!active.current) return;
-
-      gsap.to([dot, ring], {
-        x: mouse.current.x,
-        y: mouse.current.y,
-        duration: 0.12,
-        ease: "power3.out",
-      });
-    };
-
-    gsap.ticker.add(ticker);
+    document.addEventListener("pointerout", onOut as EventListener);
 
     return () => {
       window.removeEventListener("mousemove", onMove);
       document.removeEventListener("pointerover", onOver);
-      document.removeEventListener("pointerout", onOut);
-      gsap.ticker.remove(ticker);
+      document.removeEventListener("pointerout", onOut as EventListener);
+      document.body.style.cursor = "auto";
     };
   }, []);
 
@@ -140,6 +146,7 @@ export default function CustomCursor() {
           pointer-events: none;
           transform: translate(-50%, -50%);
           z-index: 9999;
+          will-change: transform, opacity;
         }
 
         .cursor-dot {
@@ -147,11 +154,9 @@ export default function CustomCursor() {
           height: 64px;
           border-radius: 9999px;
           background: #14b8a6;
-
           display: flex;
           align-items: center;
           justify-content: center;
-
           box-shadow: 0 10px 25px rgba(20, 184, 166, 0.35);
         }
 
@@ -169,6 +174,13 @@ export default function CustomCursor() {
           border: 2px solid #14b8a6;
           border-radius: 9999px;
           background: transparent;
+        }
+
+        @media (max-width: 768px) {
+          .cursor-dot,
+          .cursor-ring {
+            display: none;
+          }
         }
       `}</style>
     </>

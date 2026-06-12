@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faXTwitter, faLinkedin, faPinterest } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
@@ -167,7 +166,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Newsletter Section (Optional) */}
+    
         <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
@@ -195,7 +194,6 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
       <div className="border-t border-gray-700">
         <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-16 2xl:px-40 py-6 sm:py-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
