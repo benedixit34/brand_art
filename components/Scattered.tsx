@@ -61,7 +61,7 @@ export const Scattered = () => {
     <>
     <div
       ref={container}
-      className="h-screen hidden lg:flex items-center justify-center relative"
+      className="h-screen hidden lg:flex items-center justify-center relative overflow-hidden"
     >
       <h1 className="target-text 2xl:text-[60px]/22 text-[45px]/18 lg:text-center text-left tracking-tighter font-bold max-w-4/5">
         <span className="text-teal-900 font-bold">

@@ -4,12 +4,13 @@ import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import CustomCursor from "@/components/CustomCursor";
+import PageTransition from "@/components/PageTransition";
+
 
 
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
-
 
 
 const filson = localFont({
@@ -51,14 +52,17 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased ${filson.variable}`}
+      className={`overflow-x-hidden h-full antialiased ${filson.variable}`}
     >
-      <body className={`${filson.className} min-h-full flex flex-col overflow-x-hidden`}>
+      <body className={`${filson.className} overflow-x-hidden`}>
+    
        <CustomCursor />
         <Header />
+        
         {children}
        
         <Footer />
+       
       </body>
     </html>
   );

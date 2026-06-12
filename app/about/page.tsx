@@ -21,21 +21,21 @@ export default function Page() {
   ]);
 
   const aboutSection = useInView(0.2);
-  const cultureSection = useInView(0.2);
+  const whatSection = useInView(0.8);
 
   return (
     <main ref={mainRef}>
       {/* Hero Section */}
       <section className="flex items-center lg:flex-row flex-col gap-y-8 lg:gap-y-0 lg:gap-x-10 xl:gap-x-20">
         <div className="lg:w-1/2 xl:w-1/3 w-full opacity-0 animate-fade-in-left [animation-delay:200ms]">
-         <Image
-  src="/img/brand-art.png"
-  width={500}
-  height={500}
-  alt="Picture of the author"
-  priority
-  className="lg:h-screen object-cover object-right p-4 md:p-6 lg:p-0 animate-slide-in-left w-full"
-/>
+          <Image
+            src="/img/brand-art.png"
+            width={500}
+            height={500}
+            alt="Brand Art Organization"
+            priority
+            className="lg:h-screen object-cover object-right p-4 md:p-6 lg:p-0 animate-slide-in-left w-full"
+          />
         </div>
 
         <div className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full opacity-0 animate-fade-in-right [animation-delay:400ms]">
@@ -67,63 +67,64 @@ export default function Page() {
       </section>
 
       {/* About Us Section */}
-<section
-  ref={aboutSection.ref}
-  className="bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
->
-  <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 2xl:gap-24 items-center">
-    
-    {/* Left: Text Content */}
-    <div
-      className={`w-full space-y-6 sm:space-y-8 transition-all duration-700 ${
-        aboutSection.inView
-          ? "opacity-100 translate-x-0"
-          : "opacity-0 -translate-x-8"
-      }`}
-    >
-      <div>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
-          We speak the language of <span className="text-teal-700">Culture</span>
-        </h2>
-        <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
-          We craft ingenious creative solutions that resonate with your target community — through cultural authenticity and emotional depth.
-        </p>
-      </div>
+      <section
+        ref={aboutSection.ref}
+        className="bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
+      >
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 2xl:gap-24 items-center">
+          {/* Left: Text Content */}
+          <div
+            className={`w-full space-y-6 sm:space-y-8 transition-all duration-700 ${
+              aboutSection.inView
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+                We speak the language of{" "}
+                <span className="text-teal-700">Culture</span>
+              </h2>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
+                We craft ingenious creative solutions that resonate with your
+                target community — through cultural authenticity and emotional
+                depth.
+              </p>
+            </div>
 
-      <div className="pt-2 sm:pt-4">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
-          We craft the true essence of <span className="text-teal-700">Art</span>
-        </h2>
-        <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
-          Our commitment to authenticity and strength lies in our ability to deeply understand and translate cultural expression into powerful brand narratives.
-        </p>
-      </div>
-    </div>
+            <div className="pt-2 sm:pt-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+                We craft the true essence of{" "}
+                <span className="text-teal-700">Art</span>
+              </h2>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
+                Our commitment to authenticity and strength lies in our ability
+                to deeply understand and translate cultural expression into
+                powerful brand narratives.
+              </p>
+            </div>
+          </div>
 
-    {/* Right: Image */}
-    <div
-      className={`w-full transition-all duration-700 delay-100 ${
-        aboutSection.inView
-          ? "opacity-100 translate-x-0"
-          : "opacity-0 translate-x-8"
-      }`}
-    >
-      <div className="relative rounded-lg shadow-xl overflow-hidden">
-        <img
-          src="/img/brand_art_v2.png"
-          alt="Cultural authenticity in brand art"
-          className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
-          loading="lazy"
-        />
-        {/* Optional subtle overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
-      </div>
-    </div>
-  </div>
-</section>
-
-      {/* Culture Section */}
-     
+          {/* Right: Image */}
+          <div
+            className={`w-full transition-all duration-700 delay-100 ${
+              aboutSection.inView
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-8"
+            }`}
+          >
+            <div className="relative rounded-lg shadow-xl overflow-hidden">
+              <img
+                src="/img/brand_art_v2.png"
+                alt="Cultural authenticity in brand art"
+                className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Our Services Section */}
       <section
@@ -136,7 +137,7 @@ export default function Page() {
           </h1>
           <h3
             id="highlight-text"
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 text-center tracking-tight animated-text text-white font-light max-w-6xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center tracking-tight animated-text text-white font-light max-w-6xl mx-auto leading-relaxed"
           >
             Everything We Do is Filtered Through the Lens of Brand Experience.
             At Brand Art, we don't separate branding from campaigns or strategy
@@ -149,10 +150,19 @@ export default function Page() {
       </section>
 
       {/* What We Do Section */}
-      <section className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-40">
+      <section
+        ref={whatSection.ref}
+        className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-20 2xl:px-40"
+      >
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 items-start">
           {/* Left column */}
-          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6">
+          <div
+            className={`w-full space-y-4 sm:space-y-5 md:space-y-6 transition-all duration-700 ${
+              whatSection.inView
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-8"
+            }`}
+          >
             <h4 className="bg-yellow-100 text-yellow-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-sm inline-block w-fit">
               What we do
             </h4>
@@ -178,6 +188,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+
       <ContactSection />
     </main>
   );

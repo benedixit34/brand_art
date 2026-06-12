@@ -10,11 +10,17 @@ export function useGroupScrollAnimation(activeTab: string = "default"): {
 } {
   const refs = useRef<(HTMLDivElement | null)[]>([]);
 
+
+  refs.current = [];
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      refs.current.forEach((card, index) => {
-        if (!card) return;
+      const validCards = refs.current.filter(
+        (card): card is HTMLDivElement =>
+          !!card && document.body.contains(card)
+      );
 
+      validCards.forEach((card, index) => {
         gsap.set(card, { opacity: 0, y: 60, scale: 0.95 });
 
         gsap.fromTo(
@@ -35,6 +41,8 @@ export function useGroupScrollAnimation(activeTab: string = "default"): {
           }
         );
       });
+
+      ScrollTrigger.refresh();
     });
 
     return () => ctx.revert();

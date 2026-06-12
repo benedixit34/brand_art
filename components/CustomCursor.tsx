@@ -1,61 +1,77 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-type MousePos = {
-  x: number;
-  y: number;
-};
+type TargetType = "image" | "link" | null;
 
 export default function CustomCursor() {
-  const dotRef = useRef<HTMLDivElement | null>(null);
-  const ringRef = useRef<HTMLDivElement | null>(null);
-  const textRef = useRef<HTMLDivElement | null>(null);
+  const [isReady, setIsReady] = useState(false);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
 
-  const mouse = useRef<MousePos>({ x: -100, y: -100 });
-  const active = useRef(false);
+  const isTouchDevice = useRef(false);
+  const isActive = useRef(false);
   const currentLabel = useRef("");
 
   useEffect(() => {
-    // Skip on touch devices — no real cursor to replace
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
+    // Wait for full page load
+    const handleLoad = () => {
+      // Check for touch device only after load
+      isTouchDevice.current = window.matchMedia("(pointer: coarse)").matches;
+      if (isTouchDevice.current) {
+        setIsReady(false);
+        return;
+      }
+
+      setIsReady(true);
+    };
+
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener("load", handleLoad);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isReady) return;
 
     const dot = dotRef.current;
     const ring = ringRef.current;
     const textEl = textRef.current;
-
     if (!dot || !ring || !textEl) return;
 
+    // Initial state
     gsap.set([dot, ring], { opacity: 0, scale: 0, x: -100, y: -100 });
 
-    const onMove = (e: MouseEvent) => {
-      mouse.current = { x: e.clientX, y: e.clientY };
+    let mouseX = -100;
+    let mouseY = -100;
 
-      // Keep cursor following even when inactive, just invisible,
-      // so it doesn't "jump" from a stale position on activation
+    const updateCursorPosition = (e: MouseEvent) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
       gsap.to([dot, ring], {
-        x: mouse.current.x,
-        y: mouse.current.y,
-        duration: active.current ? 0.12 : 0,
+        x: mouseX,
+        y: mouseY,
+        duration: isActive.current ? 0.12 : 0,
         ease: "power3.out",
       });
     };
 
-    window.addEventListener("mousemove", onMove);
-
-    const getTargetType = (target: HTMLElement) => {
-      const img = target.closest("img");
-      if (img && !img.classList.contains("logo")) return "image";
-
-      const link = target.closest(".contact-link");
-      if (link) return "link";
-
+    const getTargetType = (target: HTMLElement): TargetType => {
+      if (target.closest("img") && !target.closest(".logo")) return "image";
+      if (target.closest(".contact-link")) return "link";
       return null;
     };
 
-    const setLabel = (label: string) => {
+    const updateLabel = (label: string) => {
       if (currentLabel.current === label) return;
       currentLabel.current = label;
 
@@ -70,18 +86,12 @@ export default function CustomCursor() {
       });
     };
 
-    // ENTER
-    const onOver = (e: Event) => {
-      const target = e.target as HTMLElement;
-      const type = getTargetType(target);
-
+    const showCursor = (type: TargetType) => {
       if (!type) return;
 
-      active.current = true;
+      isActive.current = true;
       document.body.style.cursor = "none";
-
-      const label = type === "image" ? "VIEW" : "CLICK";
-      setLabel(label);
+      updateLabel(type === "image" ? "VIEW" : "CLICK");
 
       gsap.to([dot, ring], {
         opacity: 1,
@@ -91,18 +101,15 @@ export default function CustomCursor() {
       });
     };
 
-    // LEAVE — only deactivate if we're not moving to a related element
-    // that's also within a "hot" zone (prevents flicker between
-    // nested children of the same target)
-    const onOut = (e: PointerEvent) => {
+    const hideCursor = (e: PointerEvent) => {
       const target = e.target as HTMLElement;
-      const related = e.relatedTarget as HTMLElement | null;
+      const relatedTarget = e.relatedTarget as HTMLElement | null;
 
       const fromType = getTargetType(target);
-      const toType = related ? getTargetType(related) : null;
+      const toType = relatedTarget ? getTargetType(relatedTarget) : null;
 
       if (fromType && !toType) {
-        active.current = false;
+        isActive.current = false;
         currentLabel.current = "";
         document.body.style.cursor = "auto";
 
@@ -114,27 +121,26 @@ export default function CustomCursor() {
       }
     };
 
-    document.addEventListener("pointerover", onOver);
-    document.addEventListener("pointerout", onOut as EventListener);
+    window.addEventListener("mousemove", updateCursorPosition);
+    document.addEventListener("pointerover", (e) => showCursor(getTargetType(e.target as HTMLElement)));
+    document.addEventListener("pointerout", hideCursor);
 
     return () => {
-      window.removeEventListener("mousemove", onMove);
-      document.removeEventListener("pointerover", onOver);
-      document.removeEventListener("pointerout", onOut as EventListener);
+      window.removeEventListener("mousemove", updateCursorPosition);
+      document.removeEventListener("pointerover", (e) => showCursor(getTargetType(e.target as HTMLElement)));
+      document.removeEventListener("pointerout", hideCursor);
       document.body.style.cursor = "auto";
     };
-  }, []);
+  }, [isReady]);
+
+  // Don't render anything until page is fully loaded and not a touch device
+  if (!isReady) return null;
 
   return (
     <>
-      {/* CURSOR DOT */}
       <div ref={dotRef} className="cursor-dot">
-        <div ref={textRef} className="cursor-text">
-          VIEW
-        </div>
+        <div ref={textRef} className="cursor-text">VIEW</div>
       </div>
-
-      {/* OUTER RING */}
       <div ref={ringRef} className="cursor-ring" />
 
       <style jsx>{`
@@ -146,14 +152,14 @@ export default function CustomCursor() {
           pointer-events: none;
           transform: translate(-50%, -50%);
           z-index: 9999;
-          will-change: transform, opacity;
+          will-change: transform;
         }
 
         .cursor-dot {
           width: 64px;
           height: 64px;
-          border-radius: 9999px;
           background: #14b8a6;
+          border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -172,7 +178,7 @@ export default function CustomCursor() {
           width: 80px;
           height: 80px;
           border: 2px solid #14b8a6;
-          border-radius: 9999px;
+          border-radius: 50%;
           background: transparent;
         }
 

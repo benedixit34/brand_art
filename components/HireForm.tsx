@@ -66,7 +66,7 @@ export default function HireForm() {
                       : prev.services.filter((s) => s !== service),
                   }));
                 }}
-                className="w-5 h-5 text-teal-600 rounded border-gray-300 focus:ring-teal-500"
+                className="w-5 h-5 text-teal-600 rounded border-gray-300 focus:ring-teal-500 accent-teal-600 transition-all duration-500 ease-in-out"
               />
               <span className="text-gray-700 font-light">{service}</span>
             </label>

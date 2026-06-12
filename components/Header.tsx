@@ -186,7 +186,7 @@ export const Header = () => {
           <a
             href="/contact"
             onClick={closeMobileMenu}
-            className="w-full px-5 py-4 rounded-sm bg-black text-white text-lg hover:bg-gray-800 transition-all duration-300 inline-flex items-center justify-center gap-2 text-center"
+            className="w-full px-5 py-4 rounded-sm bg-teal-900 text-white text-lg hover:bg-gray-800 transition-all duration-300 inline-flex items-center justify-center gap-2 text-center"
           >
             Get in Touch 
             <FontAwesomeIcon icon={faEnvelope} />
