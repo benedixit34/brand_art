@@ -54,56 +54,53 @@ export default function Page() {
       <main className="bg-white overflow-hidden" ref={mainRef}>
         {/* Case Studies Section */}
         <section className="flex flex-col space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12 p-4 sm:p-6 md:p-8 lg:p-10">
-          {cases.map(({ num, title, color, img, alt }, i) => (
-            <div
-              key={i}
-              ref={setSectionRef(i)}
-              className="relative group cursor-pointer"
-            >
-              {/* Overlay Content */}
-              <div
-                className={`
-                  ${color} 
-                  absolute inset-0 md:inset-auto 
-                  md:w-1/2 lg:w-2/5 xl:w-1/3 
-                  flex flex-col justify-between 
-                  p-4 sm:p-6 md:p-8 lg:p-10 
-                  z-10 
-                  transition-all duration-500 
-                  group-hover:md:w-2/3 lg:group-hover:w-1/2
-                `}
-              >
-                {/* Number */}
-                <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl self-start font-light">
-                  {num}
-                </p>
+{cases.map(({ num, title, color, img, alt }, i) => (
+  <div
+    key={i}
+    ref={setSectionRef(i)}
+    className="relative group cursor-pointer"
+  >
+    {/* Color Panel — stacks on mobile, overlays on md+ */}
+    <div
+      className={`
+        ${color}
+        relative md:absolute md:top-0 md:left-0 md:bottom-0
+        md:w-1/2 lg:w-2/5 xl:w-1/3
+        flex flex-col justify-between
+        p-4 sm:p-6 md:p-8 lg:p-10
+        z-10
+        transition-all duration-500
+        md:group-hover:w-2/3
+      `}
+    >
+      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl self-start font-light text-white">
+        {num}
+      </p>
+      <div className="space-y-2 sm:space-y-3 md:space-y-4">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white">
+          {title}
+        </h1>
+        <div className="flex items-center gap-2 group/cta">
+          <p className="text-base sm:text-lg md:text-xl font-light text-white/90">
+            See Case Study
+          </p>
+          <span className="text-white text-xl md:text-2xl transition-transform duration-300 group-hover/cta:translate-x-2">
+            →
+          </span>
+        </div>
+      </div>
+    </div>
 
-                {/* Title and CTA */}
-                <div className="space-y-2 sm:space-y-3 md:space-y-4">
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white">
-                    {title}
-                  </h1>
-                  <div className="flex items-center gap-2 group/cta">
-                    <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-light text-white/90">
-                      See Case Study
-                    </p>
-                    <span className="text-white text-xl md:text-2xl transition-transform duration-300 group-hover/cta:translate-x-2">
-                      →
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Image */}
-              <div className="relative h-[300px] sm:h-[400px] md:h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[60vh] overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={img}
-                  alt={alt}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
-                />
-              </div>
-            </div>
-          ))}
+    {/* Image — always visible */}
+    <div className="relative h-[220px] sm:h-[300px] md:h-[450px] lg:h-[500px] xl:h-[550px] 2xl:h-[60vh] overflow-hidden rounded-b-lg md:rounded-lg shadow-lg">
+      <img
+        src={img}
+        alt={alt}
+        className="w-full h-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
+      />
+    </div>
+  </div>
+))}
         </section>
 
         {/* Welcome Text Section */}
