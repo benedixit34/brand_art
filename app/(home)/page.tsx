@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import HomeClient from "./HomeClient";
-import { OrganizationSchema } from "@/components/OrganizationSchema";
 
 export const metadata: Metadata = {
   title: "Brand Art & Communications | Creative Branding Agency in Lagos",
@@ -64,7 +63,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <OrganizationSchema />
+   
       <HomeClient />
     </>
   );
