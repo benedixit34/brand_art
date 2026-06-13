@@ -3,7 +3,7 @@
 import { ContactSection } from "@/components/ContactSection";
 import HeroVideo from "@/components/HeroPlayer";
 import { Scattered } from "@/components/Scattered";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSplitTextAnimation } from "@/hooks/useSplitTextAnimation";
@@ -15,21 +15,21 @@ const cases = [
   {
     num: "01 / 03",
     title: "Lagos Arts",
-    color: "bg-rose-500",
+    color: "bg-teal-500",
     img: "https://i.imgur.com/mbDeYut.jpeg",
     alt: "Lagos Arts case study",
   },
   {
     num: "02 / 03",
     title: "Original Coffee",
-    color: "bg-amber-900",
+    color: "bg-yellow-500",
     img: "https://i.imgur.com/AwIR43N.jpeg",
     alt: "Original Coffee case study",
   },
   {
     num: "03 / 03",
     title: "Streetsouk",
-    color: "bg-yellow-600",
+    color: "bg-teal-500",
     img: "https://i.imgur.com/DpSrMd0.jpeg",
     alt: "Streetsouk case study",
   },
@@ -73,19 +73,19 @@ export default function Page() {
         md:group-hover:w-2/3
       `}
     >
-      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl self-start font-light text-white">
+      <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl self-start font-light">
         {num}
       </p>
       <div className="space-y-2 sm:space-y-3 md:space-y-4">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-white">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight">
           {title}
         </h1>
         <div className="flex items-center gap-2 group/cta">
-          <p className="text-base sm:text-lg md:text-xl font-light text-white/90">
+          <p className="text-base sm:text-lg md:text-xl font-light">
             See Case Study
           </p>
           <span className="text-white text-xl md:text-2xl transition-transform duration-300 group-hover/cta:translate-x-2">
-            →
+           
           </span>
         </div>
       </div>
