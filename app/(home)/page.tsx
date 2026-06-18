@@ -9,6 +9,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSplitTextAnimation } from "@/hooks/useSplitTextAnimation";
 import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
 import Image from "next/image";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,7 +50,7 @@ export default function Page() {
 
   return (
     <>
-      <HeroVideo />
+      <HeroVideo className="relative w-full h-screen overflow-hidden bg-black" />
       <Scattered />
 
       <main className="bg-white overflow-hidden" ref={mainRef}>
@@ -107,10 +108,10 @@ export default function Page() {
         {/* Welcome Text Section */}
         <section
           ref={welcomeContainer}
-          className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
+          className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-40 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
         >
          
-          <div className="relative bg-teal-500 rounded-sm py-16 xl:py-32 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+          <div className="relative bg-teal-500 rounded-sm py-16 xl:py-20 px-6 sm:px-8 md:px-12 lg:px-20">
               <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
                               <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
                               className="w-full h-full object-cover opacity-50" />
@@ -118,26 +119,31 @@ export default function Page() {
                        
                        
                       </div>
-            <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10 sm:space-y-6">
+            <div className="relative z-10 mx-auto text-center space-y-10 sm:space-y-6">
               <p
                 ref={welcomeTextRef}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 text-center tracking-tight animated-text font-light max-w-6xl mx-auto leading-relaxed"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 text-center tracking-tight animated-text  
+                mx-auto leading-relaxed"
               >
-                Welcome to <span className="text-yellow-400 font-bold whitespace-nowrap">
+                Welcome to 
                   Brand Art and Communications
-                </span>
+  
                 , where our creative thinkers work closely with innovative
                 strategy to create meaningful designs that capture the cultural
                 nuances of your audience and evoke the emotions that inspire
                 action.
               </p>
 
-              <a
-                href="/about"
-                className="inline-block bg-yellow-400 px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-yellow-300 hover:scale-105 shadow-md"
-              >
-                Learn More
-              </a>
+             <div className="mt-10">
+        <Link
+          href="/about"
+          className="inline-flex items-center gap-2 text-yellow-400 font-medium
+          border-b border-yellow-400/40 hover:border-yellow-400
+          transition-all duration-300 pb-1"
+        >
+          Learn More →
+        </Link>
+      </div>
             </div>
           </div>
         </section>

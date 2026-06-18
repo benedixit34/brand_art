@@ -1,12 +1,13 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ContactSection } from "@/components/ContactSection";
 import { useEaseAnimation } from "@/hooks/useEaseAnimation";
 import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
+
 
 
 gsap.registerPlugin(SplitText, ScrollTrigger);
@@ -129,6 +130,7 @@ export default function Page() {
        
       </section>
       <ContactSection />
+
       </main>
     </>
   );

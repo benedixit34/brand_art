@@ -53,7 +53,7 @@ export default function LoaderWrapper({ children }: Props) {
       {/* Loader */}
       {isRendered && (
         <div
-          className={`fixed inset-0 z-50 flex items-center justify-center bg-white
+          className={`fixed inset-0 z-100 flex items-center justify-center bg-white
             transition-all duration-[1200ms]
             ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         >

@@ -1,8 +1,8 @@
 "use client";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons";
+
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export const Header = () => {
@@ -39,7 +39,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className={`w-full border-b border-gray-100 transition-all duration-300 sticky top-0 z-50 tracking-tighter
+        className={`w-full transition-all duration-300 sticky top-0 z-50 tracking-tighter
           ${
             isScrolled
               ? "bg-zinc-800/80 backdrop-blur-md shadow-sm"
@@ -49,15 +49,16 @@ export const Header = () => {
         <div className="mx-auto flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-34 py-3 sm:py-4">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="block">
+            <Link href="/" className="block">
               <Image
                 src="/img/brand_art_logo.png"
                 alt="Brand Logo"
                 width={500}
                 height={500}
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain logo hover:opacity-80 transition-opacity duration-200"
+                loading="eager"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -112,13 +113,16 @@ export const Header = () => {
           ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
+          <Link href="/" onClick={closeMenu}>
            <Image
                 src="/img/brand_art_logo.png"
                 alt="Brand Logo"
                 width={500}
                 height={500}
                 className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain logo hover:opacity-80 transition-opacity duration-200"
+                loading="eager"
               />
+              </Link>
           <button
             type="button"
             onClick={closeMenu}
@@ -132,43 +136,43 @@ export const Header = () => {
           </button>
         </div>
 
-        <nav className="flex flex-col items-center h-full pt-30 gap-4 sm:gap-5 px-6 py-6 text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl p-6 space-y-6 text-7xl uppercase font-bold tracking-tighter text-gray-700">
-          <a
+        <nav className="flex flex-col items-center h-full pt-30 gap-4 sm:gap-5 px-6 py-6 text-xl md:text-5xl lg:text-6xl xl:text-7xl p-6 space-y-6 text-7xl uppercase font-bold tracking-tighter text-gray-700">
+          <Link
             href="/about"
             onClick={closeMenu}
             className="transition-colors duration-200 py-2 border-b border-gray-50 hover:text-black"
           >
             About
-          </a>
-          <a
+          </Link>
+          <Link
             href="/services"
             onClick={closeMenu}
             className="transition-colors duration-200 py-2 border-b border-gray-50 hover:text-black"
           >
             Services
-          </a>
-          <a
+          </Link>
+          <Link
             href="/work"
             onClick={closeMenu}
             className="transition-colors duration-200 py-2 border-b border-gray-50 hover:text-black"
           >
             Work
-          </a>
-          <a
+          </Link>
+          <Link
             href="/insights"
             onClick={closeMenu}
             className="transition-colors duration-200 py-2 border-b border-gray-50 hover:text-black"
           >
             Insights
-          </a>
+          </Link>
 
-            <a
+            <Link
             href="/contact"
             onClick={closeMenu}
             className="transition-colors duration-200 py-2 border-b border-gray-50 hover:text-black"
           >
             Contact
-          </a>
+          </Link>
         </nav>
 
      

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -39,15 +39,23 @@ const services = [
   },
 ];
 
+const TRANSITION_DURATION = {
+  out: 0.4,
+  in: 0.55,
+};
+
 export const ServiceSection = () => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const sentinelsRef = useRef<(HTMLDivElement | null)[]>([]);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
   const activeIndex = useRef(0);
+  const isAnimating = useRef(false);
+  const scrollTriggersRef = useRef<ScrollTrigger[]>([]);
 
-  const transitionTo = (nextIndex: number) => {
-    if (nextIndex === activeIndex.current) return;
+  const transitionTo = useCallback((nextIndex: number) => {
+    if (nextIndex === activeIndex.current || isAnimating.current) return;
+
+    isAnimating.current = true;
 
     const outCard = itemsRef.current[activeIndex.current];
     const inCard = itemsRef.current[nextIndex];
@@ -63,50 +71,54 @@ export const ServiceSection = () => {
     gsap.to(outCard, {
       opacity: 0,
       y: goingForward ? -60 : 60,
-      duration: 0.4,
+      duration: TRANSITION_DURATION.out,
       ease: "power3.in",
+    });
+
+    gsap.to(inCard, {
+      opacity: 1,
+      y: 0,
+      duration: TRANSITION_DURATION.in,
+      ease: "power3.out",
+      delay: TRANSITION_DURATION.out * 0.5,
       onComplete: () => {
-        gsap.to(inCard, {
-          opacity: 1,
-          y: 0,
-          duration: 0.55,
-          ease: "power3.out",
-        });
+        isAnimating.current = false;
       },
     });
-  };
+  }, []);
+
+  const setSentinelRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    sentinelsRef.current[i] = el;
+  }, []);
+
+  const setItemRef = useCallback((el: HTMLDivElement | null, i: number) => {
+    itemsRef.current[i] = el;
+  }, []);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.play();
-
-
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
-   
       itemsRef.current.forEach((el, i) => {
         if (!el) return;
         gsap.set(el, { opacity: i === 0 ? 1 : 0, y: 0 });
       });
 
- 
       sentinelsRef.current.forEach((sentinel, i) => {
         if (!sentinel || i === 0) return;
 
-        ScrollTrigger.create({
+        const trigger = ScrollTrigger.create({
           trigger: sentinel,
           start: "top center",
           onEnter: () => transitionTo(i),
           onLeaveBack: () => transitionTo(i - 1),
         });
+
+        scrollTriggersRef.current.push(trigger);
       });
     });
 
     mm.add("(max-width: 1023px)", () => {
-      
       itemsRef.current.forEach((el) => {
         if (!el) return;
         gsap.set(el, { clearProps: "all" });
@@ -115,85 +127,82 @@ export const ServiceSection = () => {
 
     return () => {
       mm.revert();
+      scrollTriggersRef.current.forEach((t) => t.kill());
+      scrollTriggersRef.current = [];
     };
-  }, []);
+  }, [transitionTo]);
 
   return (
-    <div
+    <section
       ref={wrapperRef}
       className="relative w-full h-auto lg:h-[500vh]"
+      aria-label="Our Services"
     >
-      {/* Invisible sentinels — Only used / rendered on Desktop */}
-      <div className="absolute inset-0 hidden lg:flex flex-col pointer-events-none">
+      {/* SCROLL SENTINELS */}
+      <div
+        className="absolute inset-0 hidden lg:flex flex-col pointer-events-none"
+        aria-hidden="true"
+      >
         {services.map((_, i) => (
           <div
             key={i}
-            ref={(el) => { sentinelsRef.current[i] = el; }}
+            ref={(el: HTMLDivElement | null) => setSentinelRef(el, i)}
             className="h-screen w-full"
           />
         ))}
       </div>
 
-      {/* Main layout frame — Sticky on desktop, standard grid layout on mobile */}
+      {/* MAIN LAYOUT */}
       <div className="relative lg:sticky top-0 h-auto lg:h-screen grid grid-cols-1 lg:grid-cols-2 2xl:px-20 lg:py-20 p-6 gap-10 lg:gap-x-40">
-        
-        {/* Left column: Cards container */}
-        <div className="relative flex flex-col gap-12 lg:gap-0 lg:py-20">
+
+        {/* SERVICES */}
+        <div className="relative flex flex-col gap-12 lg:gap-0 lg:py-20" role="list">
           {services.map((service, i) => (
-            <div
-              key={i}
-              ref={(el) => { itemsRef.current[i] = el; }}
+            <article
+              key={service.title}
+              ref={(el: HTMLDivElement | null) => setItemRef(el, i)}
               className="relative lg:absolute inset-auto lg:inset-0 lg:py-20 grid grid-rows-[auto_auto] gap-4 lg:gap-0"
             >
-      
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
                 <div className="flex items-center md:items-end bg-black text-yellow-400 min-h-[120px] md:h-full w-full p-6 rounded-sm">
-                  <h1 className="block md:hidden text-5xl mr-4 font-bold">
+                  <h2 className="block md:hidden text-5xl mr-4 font-bold">
                     {service.number}.
-                  </h1>
-                  <h1 className="lg:text-4xl text-2xl tracking-tight font-bold">
+                  </h2>
+                  <h2 className="lg:text-4xl text-2xl tracking-tight font-bold">
                     {service.title}
-                  </h1>
+                  </h2>
                 </div>
-                <div className="hidden md:flex items-center justify-center text-black
-     ">
-                  <h1 className="2xl:text-[12em] text-8xl text-center">
+
+                <div className="hidden md:flex items-center justify-center text-black">
+                  <span className="2xl:text-[12em] text-8xl text-center font-bold">
                     {service.number}
-                  </h1>
+                  </span>
                 </div>
               </div>
 
-           
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="hidden md:block" />
-                <div className="flex text-sm md:text-md/8 xl:text-xl/8 bg-yellow-400 border-teal-900 rounded-sm p-6 justify-self-stretch md:justify-self-center font-light items-end">
+                <div className="flex text-sm md:text-md/8 xl:text-xl/8 bg-yellow-400 border-teal-900 rounded-sm p-6 font-light items-end">
                   <p className="text-black">{service.description}</p>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
 
-   
-        <div className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start 
-        lg:self-auto order-first lg:order-last">
-          <div className="relative aspect-square w-full max-w-[400px] lg:max-w-[700px] overflow-hidden rounded-sm">
-            <div className="absolute inset-0 scale-[1.1] lg:scale-[1.8]">
-              <video
-                ref={videoRef}
-                muted
-                playsInline
-                loop
-                preload="auto"
-                className="absolute inset-0 w-full h-full object-cover z-0"
-              >
-                <source src="/videos/BrandArt.mp4" type="video/mp4" />
-              </video>
-            </div>
+        {/* IMAGE (REPLACED VIDEO) */}
+        <aside className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start lg:self-auto order-first lg:order-last">
+          <div className="relative aspect-square w-full overflow-hidden rounded-sm">
+            <img
+              src="/img/brand_services.png"
+              alt="Brand Art visual representation"
+              className="absolute inset-0 w-full h-full object-cover scale-[1.1]"
+              loading="lazy"
+            />
           </div>
-        </div>
+        </aside>
 
       </div>
-    </div>
+    </section>
   );
 };

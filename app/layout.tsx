@@ -11,6 +11,7 @@ import CustomCursor from "@/components/CustomCursor";
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import ContactButton from "@/components/ContactButton";
+
 config.autoAddCss = false
 
 
@@ -56,12 +57,13 @@ export default function RootLayout({
        
  
           <Header />
-           <div className="overflow-hidden">
+      
           {children}
-           </div>
+        
           <Footer />
+          <ContactButton />
        
-        <ContactButton />
+        
       </body>
     </html>
   );

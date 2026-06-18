@@ -8,6 +8,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
 import { useEaseAnimation } from "@/hooks/useEaseAnimation";
 
+
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 const tabs = [
@@ -176,6 +177,7 @@ export default function Page() {
           </div>
         </section>
         <ContactSection />
+
       </main>
     </>
   );

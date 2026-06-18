@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useSplitTextAnimation } from "@/hooks/useSplitTextAnimation";
 import { useInView } from "@/hooks/useInView";
-
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
 export default function Page() {
@@ -121,8 +120,10 @@ export default function Page() {
             }`}
           >
             <div className="relative rounded-lg shadow-xl overflow-hidden">
-              <img
+              <Image
                 src="/img/brand_art_v2.png"
+                height={500}
+                width={500}
                 alt="Cultural authenticity in brand art"
                 className="w-full h-auto object-cover transition-transform duration-500 hover:scale-105"
                 loading="lazy"
@@ -154,10 +155,10 @@ export default function Page() {
             id="highlight-text"
             className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center tracking-tight animated-text font-light max-w-6xl mx-auto leading-relaxed"
           >
-            Everything We Do is Filtered <br /> Through the Lens of Brand Experience <br />
-            At Brand Art, we don't separate branding from campaigns <br /> or strategy
-            from culture. We see the full picture. <br /> We build systems that speak
-            with consistency,<br /> and ideas that burst through the noise.<br /> Whether
+            Everything We Do is Filtered Through the Lens of Brand Experience
+            At Brand Art, we don't separate branding from campaigns or strategy
+            from culture.  We see the full picture.  We build systems that speak
+            with consistency, and ideas that burst through the noise. Whether
             you're starting out, scaling up, or breaking through, our services
             are built to adapt to your ambition.
           </h3>
@@ -205,6 +206,7 @@ export default function Page() {
       </section>
 
       <ContactSection />
+  
     </main>
   );
 }
