@@ -53,12 +53,14 @@ export default function RootLayout({
   return (
     <html lang="en" className={`h-full antialiased ${filson.variable}`}>
       <body className={filson.className}>
-        <div className="overflow-x-hidden">
-          <CustomCursor />
+       
+ 
           <Header />
+           <div className="overflow-hidden">
           {children}
+           </div>
           <Footer />
-        </div>
+       
         <ContactButton />
       </body>
     </html>
