@@ -40,10 +40,10 @@ export default function Page() {
 
         <div className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full opacity-0 animate-fade-in-right [animation-delay:400ms]">
           <div className="flex flex-col space-y-6 text-lg md:text-xl tracking-tight font-light">
-            <h4 className="bg-yellow-100 text-yellow-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-sm inline-block w-fit">
+            <h4 className="text-2xl font-semibold tracking-wider rounded-sm inline-block w-fit">
               about us
             </h4>
-            <h1 className="text-6xl md:text-7xl font-bold tracking-tighter leading-[1.1]">
+            <h1 className="text-4xl md:text-4xl font-bold tracking-tighter leading-[1.1] text-teal-500">
               We Are Brand Art
             </h1>
             <p>
@@ -69,9 +69,16 @@ export default function Page() {
       {/* About Us Section */}
       <section
         ref={aboutSection.ref}
-        className="bg-gradient-to-br from-teal-50 via-teal-100 to-teal-200 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
+        className="relative bg-yellow-400 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
       >
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 2xl:gap-24 items-center">
+         <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
+                  <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
+                  className="w-full h-full object-cover opacity-50" />
+                  
+           
+           
+          </div>
+        <div className="relative z-10 grid lg:grid-cols-2 gap-10 lg:gap-12 xl:gap-16 2xl:gap-24 items-center">
           {/* Left: Text Content */}
           <div
             className={`w-full space-y-6 sm:space-y-8 transition-all duration-700 ${
@@ -81,9 +88,9 @@ export default function Page() {
             }`}
           >
             <div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
                 We speak the language of{" "}
-                <span className="text-teal-700">Culture</span>
+                <span className="text-teal-500">Culture</span>
               </h2>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
                 We craft ingenious creative solutions that resonate with your
@@ -93,9 +100,9 @@ export default function Page() {
             </div>
 
             <div className="pt-2 sm:pt-4">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 leading-[1.2]">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
                 We craft the true essence of{" "}
-                <span className="text-teal-700">Art</span>
+                <span className="text-teal-500">Art</span>
               </h2>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
                 Our commitment to authenticity and strength lies in our ability
@@ -128,21 +135,29 @@ export default function Page() {
 
       {/* Our Services Section */}
       <section
-        className="relative z-10 bg-teal-900 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
+        className="relative bg-teal-500 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
         ref={serviceContainer}
       >
-        <div className="space-y-4 sm:space-y-6 md:space-y-8">
-          <h1 className="text-2xl sm:text-3xl text-center text-yellow-500 font-bold tracking-wide">
+
+                <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
+                  <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
+                  className="w-full h-full object-cover opacity-50" />
+                  
+           
+           
+          </div>
+        <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8">
+          <h1 className="text-2xl sm:text-3xl text-center text-yellow-500 tracking-wide">
             OUR SERVICES
           </h1>
           <h3
             id="highlight-text"
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center tracking-tight animated-text text-white font-light max-w-6xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl text-center tracking-tight animated-text font-light max-w-6xl mx-auto leading-relaxed"
           >
-            Everything We Do is Filtered Through the Lens of Brand Experience.
-            At Brand Art, we don't separate branding from campaigns or strategy
-            from culture. We see the full picture. We build systems that speak
-            with consistency, and ideas that burst through the noise. Whether
+            Everything We Do is Filtered <br /> Through the Lens of Brand Experience <br />
+            At Brand Art, we don't separate branding from campaigns <br /> or strategy
+            from culture. We see the full picture. <br /> We build systems that speak
+            with consistency,<br /> and ideas that burst through the noise.<br /> Whether
             you're starting out, scaling up, or breaking through, our services
             are built to adapt to your ambition.
           </h3>
@@ -163,17 +178,17 @@ export default function Page() {
                 : "opacity-0 -translate-x-8"
             }`}
           >
-            <h4 className="bg-yellow-100 text-yellow-800 text-xs sm:text-sm font-semibold uppercase tracking-wider px-3 py-1 rounded-sm inline-block w-fit">
+            <h4 className="text-teal-500 text-xs sm:text-3xl font-semibold uppercase tracking-wider rounded-sm inline-block w-fit">
               What we do
             </h4>
-            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tighter leading-[1.2]">
-              Everything From Strategy to Storytelling to Creative Development
-              to Standout Execution
+            <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tighter leading-[1.2]">
+              Everything <br />From Strategy<br /> to Storytelling <br />to Creative Development
+              <br />to Standout Execution
             </p>
           </div>
 
           {/* Right column */}
-          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7 text-base sm:text-lg md:text-xl leading-relaxed self-center">
+          <div className="w-full space-y-4 sm:space-y-5 md:space-y-6 lg:space-y-7 text-base sm:text-lg md:text-xl leading-relaxed self-center font-light">
             <p>
               We help brands clarify their voice, sharpen their image, and
               connect with the people that matter — through work that is

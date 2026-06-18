@@ -28,7 +28,7 @@ export const Footer = () => {
             </h1>
             
             <p className="text-sm sm:text-base text-gray-300 max-w-md mx-auto lg:mx-0">
-              Creating meaningful brand experiences through strategic design and innovative thinking.
+              We are Art. We are Culture.
             </p>
 
             {/* Social Icons */}

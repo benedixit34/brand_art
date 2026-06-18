@@ -106,7 +106,7 @@ export const ServiceSection = () => {
     });
 
     mm.add("(max-width: 1023px)", () => {
-      // Mobile fallback: Clear inline GSAP opacity/transform properties so everything stacks naturally
+      
       itemsRef.current.forEach((el) => {
         if (!el) return;
         gsap.set(el, { clearProps: "all" });
@@ -114,14 +114,13 @@ export const ServiceSection = () => {
     });
 
     return () => {
-      mm.revert(); // Automatically clears matchMedia listeners and internal ScrollTriggers
+      mm.revert();
     };
   }, []);
 
   return (
     <div
       ref={wrapperRef}
-      // Mobile: height handles content length naturally. Desktop: height acts as scroll track.
       className="relative w-full h-auto lg:h-[500vh]"
     >
       {/* Invisible sentinels — Only used / rendered on Desktop */}
@@ -148,26 +147,27 @@ export const ServiceSection = () => {
             >
       
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-0">
-                <div className="flex items-center md:items-end bg-teal-900 text-white min-h-[120px] md:h-full w-full p-6 rounded-sm">
-                  <h1 className="block md:hidden text-white text-5xl mr-4 font-bold">
+                <div className="flex items-center md:items-end bg-black text-yellow-400 min-h-[120px] md:h-full w-full p-6 rounded-sm">
+                  <h1 className="block md:hidden text-5xl mr-4 font-bold">
                     {service.number}.
                   </h1>
                   <h1 className="lg:text-4xl text-2xl tracking-tight font-bold">
                     {service.title}
                   </h1>
                 </div>
-                <div className="hidden md:flex items-center justify-center">
-                  <h1 className="2xl:text-[12em] text-8xl text-teal-900 text-center font-bold">
+                <div className="hidden md:flex items-center justify-center text-black
+     ">
+                  <h1 className="2xl:text-[12em] text-8xl text-center">
                     {service.number}
                   </h1>
                 </div>
               </div>
 
-              {/* Description Box */}
+           
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="hidden md:block" />
-                <div className="flex text-sm md:text-md/8 xl:text-xl/8 border-[0.2px] border-teal-900 rounded-sm p-6 justify-self-stretch md:justify-self-center font-light items-end">
-                  <p className="text-teal-900">{service.description}</p>
+                <div className="flex text-sm md:text-md/8 xl:text-xl/8 bg-yellow-400 border-teal-900 rounded-sm p-6 justify-self-stretch md:justify-self-center font-light items-end">
+                  <p className="text-black">{service.description}</p>
                 </div>
               </div>
             </div>
@@ -175,7 +175,8 @@ export const ServiceSection = () => {
         </div>
 
    
-        <div className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start lg:self-auto order-first lg:order-last">
+        <div className="lg:flex hidden items-center justify-center sticky top-6 lg:relative lg:top-auto self-start 
+        lg:self-auto order-first lg:order-last">
           <div className="relative aspect-square w-full max-w-[400px] lg:max-w-[700px] overflow-hidden rounded-sm">
             <div className="absolute inset-0 scale-[1.1] lg:scale-[1.8]">
               <video

@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useSplitTextAnimation } from "@/hooks/useSplitTextAnimation";
 import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -108,14 +109,21 @@ export default function Page() {
           ref={welcomeContainer}
           className="py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
         >
-          <div className="bg-teal-100 rounded-sm py-16 xl:py-32 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
-            <div className="max-w-4xl mx-auto text-center space-y-10 sm:space-y-6">
+         
+          <div className="relative bg-teal-500 rounded-sm py-16 xl:py-32 px-6 sm:px-8 md:px-12 lg:px-16 xl:px-20">
+              <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
+                              <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
+                              className="w-full h-full object-cover opacity-50" />
+                              
+                       
+                       
+                      </div>
+            <div className="relative z-10 max-w-4xl mx-auto text-center space-y-10 sm:space-y-6">
               <p
                 ref={welcomeTextRef}
                 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl/20 text-center tracking-tight animated-text font-light max-w-6xl mx-auto leading-relaxed"
               >
-                Welcome to{" "}
-                <span className="text-teal-900 font-bold whitespace-nowrap">
+                Welcome to <span className="text-yellow-400 font-bold whitespace-nowrap">
                   Brand Art and Communications
                 </span>
                 , where our creative thinkers work closely with innovative
@@ -126,7 +134,7 @@ export default function Page() {
 
               <a
                 href="/about"
-                className="inline-block bg-teal-900 text-white px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-teal-800 hover:scale-105 shadow-md"
+                className="inline-block bg-yellow-400 px-8 py-3 sm:px-10 sm:py-4 rounded-sm font-medium text-base sm:text-lg transition-all duration-300 hover:bg-yellow-300 hover:scale-105 shadow-md"
               >
                 Learn More
               </a>

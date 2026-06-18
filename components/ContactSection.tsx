@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ArrowDownRightIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 
 gsap.registerPlugin(ScrollTrigger)
@@ -85,9 +86,17 @@ export const ContactSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-yellow-400 overflow-hidden"
+      className="bg-yellow-400 overflow-hidden relative"
     >
-      <div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20 2xl:px-40 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 space-y-3 sm:space-y-4 md:space-y-6">
+
+        <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
+          <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
+          className="w-full h-full object-cover opacity-60" />
+          
+   
+   
+  </div>
+      <div className="relative z-10 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-20 2xl:px-40 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 space-y-3 sm:space-y-4 md:space-y-6">
         
        
         <p 

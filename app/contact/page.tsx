@@ -4,12 +4,13 @@ import { useRef, useState } from "react";
 import GeneralForm from "@/components/GeneralForm";
 import HireForm from "@/components/HireForm";
 import PartnerForm from "@/components/PartnerForm";
+import CareerForm from "@/components/CareerForm";
 import { useGroupScrollAnimation } from "@/hooks/useGroupScrollAnimation";
 import { useEaseAnimation } from "@/hooks/useEaseAnimation";
 
 
 
-type TabId = "hire" | "partner" | "general";
+type TabId = "hire" | "partner" | "general" | "career";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState<TabId>("hire");
@@ -20,16 +21,18 @@ export default function Page() {
  
   
 
-  const tabs: TabId[] = ["hire", "partner", "general"];
+  const tabs: TabId[] = ["hire", "partner", "general", "career"];
   const labels: Record<TabId, string> = { 
     hire: "Hire Us", 
     partner: "Partner With Us", 
-    general: "General Inquiry" 
+    general: "General Inquiry",
+    career: "Careers" 
   };
   const forms: Record<TabId, React.ReactNode> = { 
     hire: <HireForm />, 
     partner: <PartnerForm />, 
-    general: <GeneralForm /> 
+    general: <GeneralForm />,
+    career: <CareerForm/> 
   };
 
   return (
