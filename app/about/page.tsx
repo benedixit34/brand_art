@@ -8,6 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import { useSplitTextAnimation } from "@/hooks/useSplitTextAnimation";
+import Link from "next/link";
 import { useInView } from "@/hooks/useInView";
 gsap.registerPlugin(SplitText, ScrollTrigger);
 
@@ -39,12 +40,16 @@ export default function Page() {
 
         <div className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full opacity-0 animate-fade-in-right [animation-delay:400ms]">
           <div className="flex flex-col space-y-6 text-lg md:text-xl tracking-tight font-light">
-            <h4 className="text-2xl font-semibold tracking-wider rounded-sm inline-block w-fit">
+            <div className="space-y-2">
+              <h4 className="text-2xl font-semibold tracking-wider rounded-sm inline-block w-fit">
               about us
             </h4>
             <h1 className="text-4xl md:text-4xl font-bold tracking-tighter leading-[1.1] text-teal-500">
               We Are Brand Art
             </h1>
+
+            </div>
+            
             <p>
               We're an independent, insight-led creative design agency obsessed
               with the power of culture and emotion. Every brand has a truth —
@@ -147,7 +152,7 @@ export default function Page() {
            
            
           </div>
-        <div className="relative z-10 space-y-4 sm:space-y-6 md:space-y-8">
+        <div className="relative flex flex-col items-center z-10 space-y-4 sm:space-y-6 md:space-y-8">
           <h1 className="text-2xl sm:text-3xl text-center text-yellow-500 tracking-wide">
             OUR SERVICES
           </h1>
@@ -162,6 +167,14 @@ export default function Page() {
             you're starting out, scaling up, or breaking through, our services
             are built to adapt to your ambition.
           </h3>
+              <Link
+          href="/about"
+          className="inline-flex items-center gap-2 hover:text-yellow-400 font-medium
+          border-b hover:border-yellow-400
+          transition-all duration-300 pb-1"
+        >
+          Learn More →
+        </Link>
         </div>
       </section>
 

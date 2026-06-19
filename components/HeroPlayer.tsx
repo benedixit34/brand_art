@@ -11,7 +11,7 @@ export default function HeroVideo({ className = "" }: HeroVideoProps) {
     <div className={`${className}`}>
       <div className="absolute inset-0">
         <ReactPlayer
-          src="https://vimeo.com/1190493402"
+          src="/videos/BrandArt.mp4"
           playing
           muted
           loop

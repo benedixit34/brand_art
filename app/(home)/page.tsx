@@ -137,8 +137,8 @@ export default function Page() {
              <div className="mt-10">
         <Link
           href="/about"
-          className="inline-flex items-center gap-2 text-yellow-400 font-medium
-          border-b border-yellow-400/40 hover:border-yellow-400
+          className="inline-flex items-center gap-2 font-medium
+          border-b hover:border-yellow-400 hover:text-yellow-400
           transition-all duration-300 pb-1"
         >
           Learn More →

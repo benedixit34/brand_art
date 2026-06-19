@@ -82,22 +82,22 @@ export const Footer = () => {
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Who We Are
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       What We Do
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Our Service
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Our Team
                     </a>
                   </li>
@@ -111,22 +111,22 @@ export const Footer = () => {
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Creative Development
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Branding/Strategy
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Advertising Production
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Digital Marketing
                     </a>
                   </li>
@@ -141,22 +141,22 @@ export const Footer = () => {
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Hire Us
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Partner With Us
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       General Inquiry
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="footer-link text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Careers
                     </a>
                   </li>
@@ -166,32 +166,6 @@ export const Footer = () => {
           </div>
         </div>
 
-    
-        <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="text-center md:text-left">
-              <h4 className="text-lg sm:text-xl font-semibold mb-2">Subscribe to our newsletter</h4>
-              <p className="text-gray-400 text-sm">Get the latest insights and updates from BrandArt</p>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="px-4 py-2 sm:px-5 sm:py-3 bg-zinc-700 border border-zinc-600 rounded-sm text-white placeholder-gray-400 focus:outline-none focus:border-yellow-500 transition-colors w-full sm:w-64"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 sm:px-8 py-2 sm:py-3 bg-yellow-500 text-black font-semibold rounded-sm hover:bg-yellow-400 transition-colors duration-300"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
 
       <div className="border-t border-gray-700">
