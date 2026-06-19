@@ -168,7 +168,7 @@ export default function Page() {
             are built to adapt to your ambition.
           </h3>
               <Link
-          href="/about"
+          href="/services"
           className="inline-flex items-center gap-2 hover:text-yellow-400 font-medium
           border-b hover:border-yellow-400
           transition-all duration-300 pb-1"
