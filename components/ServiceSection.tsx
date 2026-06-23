@@ -159,6 +159,11 @@ export const ServiceSection = () => {
         <div className="relative flex flex-col gap-12 lg:gap-0 lg:py-20" role="list">
           {services.map((service, i) => (
             <article
+            id={service.title
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9\s]/g, "")
+    .replace(/\s+/g, "-")}
               key={service.title}
               ref={(el: HTMLDivElement | null) => setItemRef(el, i)}
               className="relative lg:absolute inset-auto lg:inset-0 lg:py-20 grid grid-rows-[auto_auto] gap-4 lg:gap-0"

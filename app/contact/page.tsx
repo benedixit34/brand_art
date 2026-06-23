@@ -56,6 +56,7 @@ export default function Page() {
             <div className="flex flex-wrap border border-gray-200 bg-white rounded-lg overflow-hidden">
               {tabs.map((tab, index) => (
                 <div
+                id={tab}
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`

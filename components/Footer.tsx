@@ -3,6 +3,18 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faXTwitter, faLinkedin, faPinterest } from "@fortawesome/free-brands-svg-icons";
 import { useState } from "react";
+import Link from "next/link";
+
+
+
+const services = [
+  { title: "Brand Strategy", id: "brand-strategy" },
+  { title: "Creative Concept Development", id: "creative-concept-development" },
+  { title: "Logo & Visual Identity", id: "logo-and-visual-identity" },
+  { title: "Brand Communications", id: "brand-communications" },
+  { title: "Experience Design", id: "experience-design" },
+];
+
 
 export const Footer = () => {
   const [email, setEmail] = useState("");
@@ -32,42 +44,30 @@ export const Footer = () => {
             </p>
 
             {/* Social Icons */}
-            <div className="flex gap-4 sm:gap-5 text-xl sm:text-2xl text-white justify-center lg:justify-start">
-              <a 
-                href="#" 
-                className="hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110"
-                aria-label="Facebook"
-              >
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
-              <a 
-                href="#" 
+            <div className="flex gap-4 sm:gap-5 text-2xl sm:text-4xl text-white justify-center lg:justify-start">
+            
+               <Link 
+                href="https://www.instagram.com/brandartco_/" 
                 className="hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110"
                 aria-label="Instagram"
               >
                 <FontAwesomeIcon icon={faInstagram} />
-              </a>
-              <a 
-                href="#" 
+               </Link>
+               <Link 
+                href="https://x.com/brandartco" 
                 className="hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110"
                 aria-label="Twitter"
               >
                 <FontAwesomeIcon icon={faXTwitter} />
-              </a>
-              <a 
+               </Link>
+               <Link 
                 href="#" 
                 className="hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110"
                 aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
-              </a>
-              <a 
-                href="#" 
-                className="hover:text-yellow-500 transition-colors duration-300 transform hover:scale-110"
-                aria-label="Pinterest"
-              >
-                <FontAwesomeIcon icon={faPinterest} />
-              </a>
+               </Link>
+         
             </div>
           </div>
 
@@ -82,24 +82,22 @@ export const Footer = () => {
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/about/#who-we-are" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Who We Are
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/about/#what-we-do" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       What We Do
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/services" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Our Service
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
-                      Our Team
-                    </a>
+             
                   </li>
                 </ul>
               </div>
@@ -110,26 +108,16 @@ export const Footer = () => {
                   <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-yellow-500 hidden sm:block"></span>
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
-                      Creative Development
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
-                      Branding/Strategy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
-                      Advertising Production
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
-                      Digital Marketing
-                    </a>
-                  </li>
+              {services.map((service) => (
+    <li key={service.id}>
+      <Link
+        href={`/services/#${service.id}`}
+        className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base"
+      >
+        {service.title}
+      </Link>
+    </li>
+  ))}
                 </ul>
               </div>
 
@@ -141,24 +129,24 @@ export const Footer = () => {
                 </h3>
                 <ul className="space-y-3 sm:space-y-4">
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/contact/#hire" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Hire Us
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/contact/#partner" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Partner With Us
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/contact/#general" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       General Inquiry
-                    </a>
+                     </Link>
                   </li>
                   <li>
-                    <a href="#" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
+                     <Link href="/contact/#career" className="text-gray-300 hover:text-yellow-500 transition-colors duration-200 text-sm sm:text-base">
                       Careers
-                    </a>
+                     </Link>
                   </li>
                 </ul>
               </div>
@@ -176,9 +164,9 @@ export const Footer = () => {
             </p>
             
             <div className="flex gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-yellow-500 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-yellow-500 transition-colors">Terms of Service</a>
-              <a href="#" className="hover:text-yellow-500 transition-colors">Cookie Policy</a>
+               <Link href="#" className="hover:text-yellow-500 transition-colors">Privacy Policy </Link>
+               <Link href="#" className="hover:text-yellow-500 transition-colors">Terms of Service </Link>
+               <Link href="#" className="hover:text-yellow-500 transition-colors">Cookie Policy </Link>
             </div>
           </div>
         </div>

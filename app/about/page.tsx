@@ -38,11 +38,11 @@ export default function Page() {
           />
         </div>
 
-        <div className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full opacity-0 animate-fade-in-right [animation-delay:400ms]">
+        <div id="who-we-are" className="py-8 sm:py-10 md:py-12 px-4 sm:px-6 md:px-8 lg:w-1/2 xl:w-1/2 w-full opacity-0 animate-fade-in-right [animation-delay:400ms]">
           <div className="flex flex-col space-y-6 text-lg md:text-xl tracking-tight font-light">
             <div className="space-y-2">
-              <h4 className="text-2xl font-semibold tracking-wider rounded-sm inline-block w-fit">
-              about us
+              <h4 className="text-xl font-semibold tracking-wider rounded-sm inline-block w-fit">
+              ABOUT US
             </h4>
             <h1 className="text-4xl md:text-4xl font-bold tracking-tighter leading-[1.1] text-teal-500">
               We Are Brand Art
@@ -73,7 +73,7 @@ export default function Page() {
       {/* About Us Section */}
       <section
         ref={aboutSection.ref}
-        className="relative bg-yellow-400 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
+         className="relative bg-yellow-400 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-80"
       >
          <div className="absolute inset-0 w-full h-full pointer-events-none select-none bg-0 ">
                   <Image src="/img/bg_vector.png" alt="Brand Art and Communications" width={500} height={500}
@@ -93,8 +93,7 @@ export default function Page() {
           >
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
-                We speak the language of{" "}
-                <span className="text-teal-500">Culture</span>
+                We speak the language of Culture
               </h2>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
                 We craft ingenious creative solutions that resonate with your
@@ -105,8 +104,7 @@ export default function Page() {
 
             <div className="pt-2 sm:pt-4">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-[1.2]">
-                We craft the true essence of{" "}
-                <span className="text-teal-500">Art</span>
+                We craft the true essence of Art
               </h2>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-gray-700 leading-relaxed font-light">
                 Our commitment to authenticity and strength lies in our ability
@@ -141,7 +139,7 @@ export default function Page() {
 
       {/* Our Services Section */}
       <section
-        className="relative bg-teal-500 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
+       id="what-we-do" className="relative bg-teal-500 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 2xl:py-32 px-4 sm:px-6 md:px-8 lg:px-16 xl:px-32 2xl:px-40"
         ref={serviceContainer}
       >
 
@@ -153,7 +151,7 @@ export default function Page() {
            
           </div>
         <div className="relative flex flex-col items-center z-10 space-y-4 sm:space-y-6 md:space-y-8">
-          <h1 className="text-2xl sm:text-3xl text-center text-yellow-500 tracking-wide">
+          <h1 className="text-2xl sm:text-3xl text-center tracking-wide">
             OUR SERVICES
           </h1>
           <h3
